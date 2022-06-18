@@ -35,9 +35,11 @@ AppAsset::register($this);
         ],
     ]);
     $menuItems = [
-        ['label' => 'Home', 'url' => ['/site/index']],
-        ['label' => 'About', 'url' => ['/site/about']],
-        ['label' => 'Contact', 'url' => ['/site/contact']],
+        ['label' => 'Заказы', 'url' => ['/order/index']],
+        ['label' => 'Баланс', 'url' => ['/user-balance/index']],
+        ['label' => 'Активные заказы', 'url' => ['/site/my-orders']],
+        ['label' => 'Созданные заказы', 'url' => ['/site/own-orders']],
+        ['label' => 'Поддержка', 'url' => ['/site/help']],
     ];
     if (Yii::$app->user->isGuest) {
         $menuItems[] = ['label' => 'Signup', 'url' => ['/site/signup']];
@@ -72,8 +74,7 @@ AppAsset::register($this);
 
 <footer class="footer mt-auto py-3 text-muted">
     <div class="container">
-        <p class="float-left">&copy; <?= Html::encode(Yii::$app->name) ?> <?= date('Y') ?></p>
-        <p class="float-right"><?= Yii::powered() ?></p>
+
     </div>
 </footer>
 

@@ -40,8 +40,8 @@ class District extends \yii\db\ActiveRecord
     {
         return [
             'id' => 'ID',
-            'city_id' => 'City ID',
-            'name' => 'Name',
+            'city_id' => 'Город',
+            'name' => 'Название',
         ];
     }
 
