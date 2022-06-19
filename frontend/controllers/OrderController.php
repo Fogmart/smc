@@ -38,14 +38,25 @@ class OrderController extends Controller
      */
     public function actionIndex()
     {
-        $searchModel = new OrderSearch();
-        $dataProvider = $searchModel->search($this->request->queryParams);
+        $orders = Order::find()->all();
 
-        return $this->render('index', [
-            'searchModel' => $searchModel,
-            'dataProvider' => $dataProvider,
-        ]);
+        return $this->render('index', compact('orders'));
     }
+
+    public function actionOwnOrders()
+    {
+        $orders = \Yii::$app->user->identity->ownorders;
+
+        return $this->render('index', compact('orders'));
+    }
+
+    public function actionMyOrders()
+    {
+        $orders = \Yii::$app->user->identity->myorders;
+
+        return $this->render('index', compact('orders'));
+    }
+
 
     /**
      * Displays a single Order model.
@@ -136,4 +147,6 @@ class OrderController extends Controller
 
         throw new NotFoundHttpException('The requested page does not exist.');
     }
+
+
 }

@@ -37,8 +37,8 @@ AppAsset::register($this);
     $menuItems = [
         ['label' => 'Заказы', 'url' => ['/order/index']],
         ['label' => 'Баланс', 'url' => ['/user-balance/index']],
-        ['label' => 'Активные заказы', 'url' => ['/site/my-orders']],
-        ['label' => 'Созданные заказы', 'url' => ['/site/own-orders']],
+        ['label' => 'Активные заказы', 'url' => ['/order/my-orders']],
+        ['label' => 'Созданные заказы', 'url' => ['/order/own-orders']],
         ['label' => 'Поддержка', 'url' => ['/site/help']],
     ];
     if (Yii::$app->user->isGuest) {

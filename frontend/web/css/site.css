@@ -88,3 +88,14 @@ a.desc:after {
 .nav > li > form > button.logout:focus {
     outline: none;
 }
+
+
+.tbl  {
+    border-collapse: collapse;
+    width: 100%;
+
+}
+.tbl th, .tbl td {
+    border: 1px solid black;
+    padding: 5px;
+}

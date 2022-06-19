@@ -87,6 +87,11 @@ class Order extends \yii\db\ActiveRecord
         return $this->hasOne(Prof::className(),['id'=>'prof_id']);
     }
 
+    public function getWhocrt(){
+        return $this->hasOne(User::className(),['id'=>'crt_by']);
+    }
+
+
     public function getLevelname(){
         return self::LEVEL[$this->level];
     }

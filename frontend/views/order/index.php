@@ -7,6 +7,7 @@ use yii\grid\GridView;
 
 /* @var $this yii\web\View */
 /* @var $searchModel common\models\OrderSearch */
+/* @var $orders common\models\Order */
 /* @var $dataProvider yii\data\ActiveDataProvider */
 
 $this->title = 'Orders';
@@ -17,36 +18,34 @@ $this->params['breadcrumbs'][] = $this->title;
     <h1><?= Html::encode($this->title) ?></h1>
 
     <p>
-        <?= Html::a('Create Order', ['create'], ['class' => 'btn btn-success']) ?>
+        <?= Html::a('Добавить', ['create'], ['class' => 'btn btn-success']) ?>
     </p>
 
-    <?php // echo $this->render('_search', ['model' => $searchModel]); ?>
+    <table class="tbl">
+        <tr>
+            <th>#</th>
+            <th>Профессия/вид работ</th>
+            <th>Город/район</th>
+            <th>Цена</th>
+            <th>Телефон</th>
+            <th>Сложность</th>
+            <th>Кем создан</th>
+        </tr>
+        <?foreach ($orders as $i=>$order) {?>
+            <tr>
+                <td><?=$i+1?></td>
+                <td><?=$order->prof->name?> / <?=$order->jobType->name?></td>
+                <td><?=$order->city->name?> / <?=$order->district->name?></td>
+                <td><?=$order->price?></td>
+                <td><?=$order->phone?></td>
+                <td><?=$order->levelname?></td>
+                <td><?=$order->whocrt->username?></td>
+            </tr>
+        <? } ?>
 
-    <?= GridView::widget([
-        'dataProvider' => $dataProvider,
-        'filterModel' => $searchModel,
-        'columns' => [
-            ['class' => 'yii\grid\SerialColumn'],
 
-            'id',
-            'prof_id',
-            'job_type_id',
-            'city_id',
-            'district_id',
-            //'price',
-            //'level',
-            //'status',
-            //'phone:ntext',
-            //'timelimit:datetime',
-            //'whncrt',
-            [
-                'class' => ActionColumn::className(),
-                'urlCreator' => function ($action, \common\models\Order $model, $key, $index, $column) {
-                    return Url::toRoute([$action, 'id' => $model->id]);
-                 }
-            ],
-        ],
-    ]); ?>
+    </table>
+
 
 
 </div>
