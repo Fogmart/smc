@@ -91,7 +91,7 @@ class SiteController extends Controller
 
         $model->password = '';
 
-        return $this->render('login', [
+        return $this->renderPartial('login', [
             'model' => $model,
         ]);
     }
@@ -253,7 +253,7 @@ class SiteController extends Controller
     }
 
     public function actionVariantsReg(){
-        return $this->render('variants_reg');
+        return $this->renderPartial('variants_reg');
     }
 
     public function actionRegClient(){
