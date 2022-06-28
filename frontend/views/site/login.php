@@ -10,32 +10,43 @@ use yii\bootstrap4\ActiveForm;
 $this->title = 'Login';
 $this->params['breadcrumbs'][] = $this->title;
 ?>
-<div class="site-login">
-    <h1><?= Html::encode($this->title) ?></h1>
 
-    <p>Please fill out the following fields to login:</p>
 
-    <div class="row">
-        <div class="col-lg-5">
-            <?php $form = ActiveForm::begin(['id' => 'login-form']); ?>
 
-                <?= $form->field($model, 'username')->textInput(['autofocus' => true]) ?>
 
-                <?= $form->field($model, 'password')->passwordInput() ?>
+<section id="auth_block">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="logo_white">
+                    <div class="logo_item">
+                        <img src="/images/logo_white.svg">
+                        <span>SMC</span>
+                    </div>
 
-                <?= $form->field($model, 'rememberMe')->checkbox() ?>
-
-                <div style="color:#999;margin:1em 0">
-                    If you forgot your password you can <?= Html::a('reset it', ['site/request-password-reset']) ?>.
-                    <br>
-                    Need new verification email? <?= Html::a('Resend', ['site/resend-verification-email']) ?>
+                    <p>качество, быстрота, надёжность</p>
                 </div>
 
-                <div class="form-group">
-                    <?= Html::submitButton('Login', ['class' => 'btn btn-primary', 'name' => 'login-button']) ?>
-                </div>
+                <div class="auth_items block_shadow b_center">
 
-            <?php ActiveForm::end(); ?>
+                    <h2 class="b_center">Вход в систему</h2>
+
+                    <?php $form = ActiveForm::begin(['id' => 'login-form']); ?>
+
+                    <?= $form->field($model, 'username')
+                        ->textInput(['autofocus' => true, 'placeholder' => "E-mail", 'class'=>'input'])->label('') ?>
+                    <?= $form->field($model, 'password')
+                        ->passwordInput(['placeholder' => "Пароль", 'class'=>'input'])->label('') ?>
+                        <?= Html::submitButton('Войти', ['class' => 'button', 'name' => 'login-button']) ?>
+                    <?php ActiveForm::end(); ?>
+
+                    <p class="m_t_15"><a href="#">Забыли пароль?</a></p>
+                </div>
+                <p class="text-grey">Нет аккаунта? <a href="/site/variants-reg">Зарегистрируйтесь</a></p>
+                <p class="text-grey">Центр поддержки клиентов: <a href="#">8 800 100 00 00</a><br>
+                    Звонок по России бесплатный</p>
+            </div>
         </div>
     </div>
-</div>
+</section>
+

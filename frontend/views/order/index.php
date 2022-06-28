@@ -14,37 +14,94 @@ $this->title = 'Orders';
 $this->params['breadcrumbs'][] = $this->title;
 ?>
 <div class="order-index">
-
-    <h1><?= Html::encode($this->title) ?></h1>
-
     <p>
         <?= Html::a('Добавить', ['create'], ['class' => 'btn btn-success']) ?>
     </p>
 
-    <table class="tbl">
-        <tr>
-            <th>#</th>
-            <th>Профессия/вид работ</th>
-            <th>Город/район</th>
-            <th>Цена</th>
-            <th>Телефон</th>
-            <th>Сложность</th>
-            <th>Кем создан</th>
-        </tr>
-        <?foreach ($orders as $i=>$order) {?>
-            <tr>
-                <td><?=$i+1?></td>
-                <td><?=$order->prof->name?> / <?=$order->jobType->name?></td>
-                <td><?=$order->city->name?> / <?=$order->district->name?></td>
-                <td><?=$order->price?></td>
-                <td><?=$order->phone?></td>
-                <td><?=$order->levelname?></td>
-                <td><?=$order->whocrt->username?></td>
-            </tr>
-        <? } ?>
+    <section id="list_jobs">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12">
+                    <h1>Список заказов</h1>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="list_items">
+        <div class="container">
+            <div class="row">
+                <?foreach ($orders as $i=>$order) {?>
+                    <div class="col-md-4">
+                        <div class="job_item">
+                            <div class="top_item">
+                                <div class="item_left">
+                                    <h2><?=$order->jobType->name?></h2>
+                                    <div class="city">
+                                        <?=$order->city->name?>
+                                    </div>
+                                    <div class="raion">
+                                        <?=$order->district->name?>
+                                    </div>
+                                    <div class="date"><?=$order->whn?></div>
+                                </div>
+                                <div class="item_right">
+                                    <div class="id_item">
+                                        ID <?=$order->id?>
+                                    </div>
+
+                                    <div class="prof">
+                                        <?=$order->prof->name?>
+                                    </div>
+
+                                    <div class="raiting">
+                                        <p>Сложность</p>
+
+                                        <? for ($i=1; $i<=$order->level; $i++) {?>
+                                            <img src="/images/star_full.svg">
+                                        <? }?>
+                                        <? for ($i=$order->level; $i< 5; $i++) {?>
+                                            <img src="/images/star_empty.svg">
+                                        <? }?>
 
 
-    </table>
+                                    </div>
+
+                                    <div class="status">
+                                        Ожидает
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="description">
+                                <?=$order->desctipt?>
+
+                            </div>
+
+                            <div class="btn_price">
+                                <button>Взять заказ</button>
+                                <span><?=$order->price?> <i>руб.</i></span>
+                            </div>
+
+                            <div class="client_contact">
+                                <div class="phone">
+                                    <img src="/images/phone.svg">
+                                    <div class="phone_num">+7 999 ...</div>
+                                </div>
+
+                                <div class="txt_warning">
+                                    Номер телефона клиента будет доступен только после получения заказа
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                <? } //foreach ($orders ?>
+
+
+
+            </div>
+        </div>
+    </section>
 
 
 

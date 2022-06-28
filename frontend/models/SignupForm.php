@@ -19,6 +19,7 @@ class SignupForm extends Model
     public $phone;
     public $avatar;
     public $type_id;
+    public $city_id;
 
 
     /**
@@ -42,6 +43,7 @@ class SignupForm extends Model
             ['password', 'string', 'min' => Yii::$app->params['user.passwordMinLength']],
 
             [['type_id'], 'integer'],
+            [['city_id'], 'integer'],
             [['fio'], 'string', 'max' => 100],
             [['avatar'], 'string', 'max' => 500],
             [['phone'], 'string', 'max' => 20],
@@ -72,6 +74,7 @@ class SignupForm extends Model
         $uInfo->type_id = $this->type_id;
         $uInfo->fio = $this->fio;
         $uInfo->phone = $this->phone;
+        $uInfo->city_id = $this->city_id;
         $uInfo->save();
 
         return 1;

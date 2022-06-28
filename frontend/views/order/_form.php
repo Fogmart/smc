@@ -36,6 +36,8 @@ use yii\widgets\ActiveForm;
     ]);?>
 
 
+    <?= $form->field($model, 'desctipt')->textarea() ?>
+
     <?= $form->field($model, 'price')->textInput() ?>
 
     <?= $form->field($model, 'level')->dropdownList(\common\models\Order::LEVEL) ?>

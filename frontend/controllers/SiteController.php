@@ -2,6 +2,7 @@
 
 namespace frontend\controllers;
 
+use common\models\Prof;
 use frontend\models\ResendVerificationEmailForm;
 use frontend\models\VerifyEmailForm;
 use Yii;
@@ -256,4 +257,35 @@ class SiteController extends Controller
             'model' => $model
         ]);
     }
+
+    public function actionVariantsReg(){
+        return $this->render('variants_reg');
+    }
+
+    public function actionRegClient(){
+        $model = new SignupForm();
+        if ($model->load(Yii::$app->request->post()) && $model->signup()) {
+            Yii::$app->session->setFlash('success', 'Thank you for registration. Please check your inbox for verification email.');
+            return $this->goHome();
+        }
+
+        return $this->render('reg_client', [
+            'model' => $model,
+        ]);
+    }
+
+    public function actionRegMaster(){
+        $model = new SignupForm();
+        if ($model->load(Yii::$app->request->post()) && $model->signup()) {
+            Yii::$app->session->setFlash('success', 'Thank you for registration. Please check your inbox for verification email.');
+            return $this->goHome();
+        }
+        $profs = Prof::find()->all();
+
+        return $this->render('reg_master', [
+            'model' => $model,
+            'profs' => $profs,
+        ]);
+    }
+
 }

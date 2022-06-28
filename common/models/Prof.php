@@ -44,4 +44,8 @@ class Prof extends \yii\db\ActiveRecord
             'prcnt' => 'Процент',
         ];
     }
+
+    public function getJobtypes(){
+        return $this->hasMany(JobType::className(),["prof_id"=>"id"]);
+    }
 }

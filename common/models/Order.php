@@ -23,9 +23,11 @@ class Order extends \yii\db\ActiveRecord
 {
 
     const LEVEL = [
-        '1'=>"Просто",
-        '2'=>"Средне",
-        '3'=>"Сложно",
+        '1'=>"1",
+        '2'=>"2",
+        '3'=>"3",
+        '4'=>"4",
+        '5'=>"5",
     ];
 
     /**
@@ -48,6 +50,7 @@ class Order extends \yii\db\ActiveRecord
             [['whncrt'], 'safe'],
             [['crt_by'], 'safe'],
             [['take_by'], 'safe'],
+            [['desctipt'], 'safe'],
         ];
     }
 
@@ -68,6 +71,7 @@ class Order extends \yii\db\ActiveRecord
             'phone' => 'Телефон',
             'timelimit' => 'Срок',
             'whncrt' => 'Когда создан',
+            'desctipt' => 'Описание',
         ];
     }
 
@@ -94,6 +98,10 @@ class Order extends \yii\db\ActiveRecord
 
     public function getLevelname(){
         return self::LEVEL[$this->level];
+    }
+
+    public function getWhn(){
+        return date('d.m.Y', $this->whncrt);
     }
 
 }
