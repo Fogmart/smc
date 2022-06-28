@@ -36,7 +36,7 @@
                     </div>
 
                 </div>
-                <p class="text-grey">Есть аккаунт? <a href="#">Войти</a></p>
+                <p class="text-grey">Есть аккаунт? <a href="/site/login">Войти</a></p>
                 <p class="text-grey">Центр поддержки клиентов: <a href="#">8 800 100 00 00</a><br>
                     Звонок по России бесплатный</p>
             </div>

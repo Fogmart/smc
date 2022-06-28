@@ -66,55 +66,56 @@ AppAsset::register($this);
 //    ?>
 <!--</header>-->
 
-
-<header id="sticky_header">
-    <div class="container">
-        <div class="row">
-            <div class="col-md-12">
-                <nav class="navbar navbar-expand-lg navbar-light">
-                    <button class="navbar-toggler" type="button" data-toggle="offcanvas">
-                        <span class="navbar-toggler-icon"></span>
-                    </button>
-                    <a class="navbar-brand" href="#"><img src="/images/logo.svg"></a>
-                    <div class="navbar-collapse offcanvas-collapse" id="navbarSupportedContent">
-                        <button class="offcanvas-close" type="button" data-toggle="offcanvas-close">
-                            ×
+<? if(!Yii::$app->user->isGuest) { ?>
+    <header id="sticky_header">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12">
+                    <nav class="navbar navbar-expand-lg navbar-light">
+                        <button class="navbar-toggler" type="button" data-toggle="offcanvas">
+                            <span class="navbar-toggler-icon"></span>
                         </button>
-                        <ul class="navbar-nav mr-auto">
-                            <li class="nav-item active">
-                                <a class="nav-link" href="/order/">Список заказов</a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link" href="#">Техническая поддержка</a>
-                            </li>
+                        <a class="navbar-brand" href="#"><img src="/images/logo.svg"></a>
+                        <div class="navbar-collapse offcanvas-collapse" id="navbarSupportedContent">
+                            <button class="offcanvas-close" type="button" data-toggle="offcanvas-close">
+                                ×
+                            </button>
+                            <ul class="navbar-nav mr-auto">
+                                <li class="nav-item active">
+                                    <a class="nav-link" href="/order/">Список заказов</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link" href="#">Техническая поддержка</a>
+                                </li>
 
-                            <li class="nav-item">
+                                <li class="nav-item">
 
-                            </li>
+                                </li>
 
-                            <li class="nav-item dropdown">
-                                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown"
-                                   aria-haspopup="true" aria-expanded="false">
-                                    <img src="/images/avatar.png">
-                                </a>
-                                <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                                    <a class="dropdown-item" href="#">Профиль</a>
-                                    <a class="dropdown-item" href="#">Баланс</a>
-                                    <a class="dropdown-item" href="#">История заказов</a>
-                                    <a class="dropdown-item" href="#">Уведомления</a>
-                                    <div class="dropdown-divider"></div>
-                                    <a class="dropdown-item" href="#">Выйти</a>
-                                </div>
-                            </li>
-                        </ul>
+                                <li class="nav-item dropdown">
+                                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown"
+                                       aria-haspopup="true" aria-expanded="false">
+                                        <img src="/images/avatar.png">
+                                    </a>
+                                    <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                                        <a class="dropdown-item" href="#">Профиль</a>
+                                        <a class="dropdown-item" href="#">Баланс</a>
+                                        <a class="dropdown-item" href="#">История заказов</a>
+                                        <a class="dropdown-item" href="#">Уведомления</a>
+                                        <div class="dropdown-divider"></div>
+                                        <a class="dropdown-item" href="/site/logout">Выйти</a>
+                                    </div>
+                                </li>
+                            </ul>
 
-                    </div>
-                </nav>
+                        </div>
+                    </nav>
+                </div>
             </div>
         </div>
-    </div>
 
-</header>
+    </header>
+<? } ?>
 
 
 <main role="main" class="flex-shrink-0">

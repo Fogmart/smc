@@ -68,7 +68,7 @@ justify-content: center;
 }
 
 .button.upload i {
-    background: url(/assets/images/upload.svg);
+    background: url(/images/upload.svg);
     width: 24px;
     height: 24px;
     display: inline-block;
@@ -89,7 +89,7 @@ border: 1px solid #D2D2D2;
 padding: 10px 30px;
 margin-bottom: 20px;
 width: 100%;
-background-image: url(/assets/images/arrow_select.svg);
+background-image: url(/images/arrow_select.svg);
 background-color: #fff;
 appearance: none;
 background-repeat: no-repeat;
@@ -183,7 +183,7 @@ margin-bottom: 30px;
 
 #auth_block,
 #variants_reg {
-    background: url(/assets/images/bg_login.jpg); 
+    background: url(/images/bg_login.jpg);
     background-size: cover; 
     background-position: center top;
 }
@@ -319,12 +319,12 @@ font-weight: 600;
     left: 0;
     top: 0;
     transition: background 0.3s ease;
-    background: url(/assets/images/check_empty.svg) 0 0 no-repeat;
+    background: url(/images/check_empty.svg) 0 0 no-repeat;
 }
  
 /* Checked */
 .checkbox input[type=checkbox]:checked + span:before {
-    background-image: url(/assets/images/check_full.svg);
+    background-image: url(/images/check_full.svg);
 }
  
 /* Focus */
@@ -500,7 +500,7 @@ nav .show a {
 
 .filter_jobs .accordion:after {
     content: '';
-    background: url(/assets/images/ac_arrow_down.svg); 
+    background: url(/images/ac_arrow_down.svg);
     width: 21px;
 height: 12px;
     float: right;
@@ -510,7 +510,7 @@ height: 12px;
 
 .filter_jobs .active:after {
     content: ''; 
-    background: url(/assets/images/ac_arrow_up.svg); 
+    background: url(/images/ac_arrow_up.svg);
     width: 21px;
 height: 12px;
 }
@@ -731,7 +731,7 @@ height: auto;
 
 #auth_block,
 #variants_reg {
-    background: url(/assets/images/bg_login.jpg); 
+    background: url(/images/bg_login.jpg);
     background-size: cover; 
     background-position: left top;
     background-attachment: fixed;
