@@ -234,5 +234,13 @@ class User extends ActiveRecord implements IdentityInterface
         return $this->hasMany(Order::className(),['take_by'=>'id']);
     }
 
+    public function getAvatar(){
+        return $this->info->avatar ? '/'.$this->info->avatar : UserInfo::BASE_AVATAR;
+    }
+
+    public function getTickets(){
+        return $this->hasMany(SupportTicket::className(),['src_user_id'=>'id']);
+    }
+
 
 }

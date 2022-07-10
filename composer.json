@@ -21,7 +21,8 @@
         "marekpetras/yii2-ajax-box-widget": "^1.0",
         "loveorigami/yii2-modal-ajax": "@dev",
         "select2/select2": "^4.0",
-        "kartik-v/yii2-widget-select2": "^2.2"
+        "kartik-v/yii2-widget-select2": "^2.2",
+        "kartik-v/bootstrap-fileinput": "dev-master"
     },
     "require-dev": {
         "yiisoft/yii2-debug": "~2.1.0",

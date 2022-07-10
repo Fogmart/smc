@@ -43,6 +43,8 @@ return [
             'enablePrettyUrl' => true,
             'showScriptName' => false,
             'rules' => [
+                'support' => 'support-ticket/index',
+                'support/<id:\d+>' => 'support-ticket/view',
             ],
         ],
 

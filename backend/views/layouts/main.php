@@ -47,7 +47,7 @@ AppAsset::register($this);
         ['label' => 'Новости', 'url' => ['/']],
         ['label' => 'Правила', 'url' => ['/']],
         ['label' => 'Оферта', 'url' => ['/']],
-        ['label' => 'Тех поддержка', 'url' => ['/']],
+        ['label' => 'Тех поддержка', 'url' => ['/support-ticket']],
 
     ];
     if (Yii::$app->user->isGuest) {

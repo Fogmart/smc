@@ -913,8 +913,12 @@ top: -140px;
         display: none;
       }
 
-.navbar-expand-lg {
-    padding: 10px 0;
-}
+        .navbar-expand-lg {
+            padding: 10px 0;
+        }
 
     }
+
+.img_preview{
+    width: 100px;
+}

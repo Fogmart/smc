@@ -11,6 +11,7 @@ use yii\bootstrap4\Nav;
 use yii\bootstrap4\NavBar;
 
 AppAsset::register($this);
+\frontend\assets\VendorAsset::register($this);
 ?>
 <?php $this->beginPage() ?>
 <!DOCTYPE html>
@@ -49,7 +50,7 @@ AppAsset::register($this);
                                     <a class="nav-link" href="/order/">Список заказов</a>
                                 </li>
                                 <li class="nav-item">
-                                    <a class="nav-link" href="#">Техническая поддержка</a>
+                                    <a class="nav-link" href="/support">Техническая поддержка</a>
                                 </li>
 
                                 <li class="nav-item">
@@ -59,10 +60,10 @@ AppAsset::register($this);
                                 <li class="nav-item dropdown">
                                     <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown"
                                        aria-haspopup="true" aria-expanded="false">
-                                        <img src="/images/avatar.png">
+                                        <img src="<?=Yii::$app->user->identity->avatar?>">
                                     </a>
                                     <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                                        <a class="dropdown-item" href="#">Профиль</a>
+                                        <a class="dropdown-item" href="/profile">Профиль</a>
                                         <a class="dropdown-item" href="#">Баланс</a>
                                         <a class="dropdown-item" href="#">История заказов</a>
                                         <a class="dropdown-item" href="#">Уведомления</a>
