@@ -14,32 +14,28 @@ $this->params['breadcrumbs'][] = $this->title;
 ?>
 <div class="user-balance-index">
 
-    <h1><?= Html::encode($this->title) ?></h1>
+    <h1>Баланс</h1>
 
     <p>
-        <?= Html::a('Create User Balance', ['create'], ['class' => 'btn btn-success']) ?>
+        <?= Html::a('Добавить', ['create'], ['class' => 'btn btn-success']) ?>
     </p>
 
-    <?php // echo $this->render('_search', ['model' => $searchModel]); ?>
+    <table class="tbl">
+        <tr>
+            <th>#</th>
+            <th>Сколько</th>
+            <th>Когда</th>
+        </tr>
+        <?foreach ($balance_lst as $i=>$b) {?>
+            <tr>
+                <td><?=$i+1?></td>
+                <td><?=$b->val?></td>
+                <td><?=$b->whn?></td>
+            </tr>
+        <? } ?>
 
-    <?= GridView::widget([
-        'dataProvider' => $dataProvider,
-        'filterModel' => $searchModel,
-        'columns' => [
-            ['class' => 'yii\grid\SerialColumn'],
 
-            'id',
-            'user_id',
-            'val',
-            'whn',
-            [
-                'class' => ActionColumn::className(),
-                'urlCreator' => function ($action, UserBalance $model, $key, $index, $column) {
-                    return Url::toRoute([$action, 'id' => $model->id]);
-                 }
-            ],
-        ],
-    ]); ?>
+    </table>
 
 
 </div>

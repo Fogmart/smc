@@ -38,12 +38,12 @@ class UserBalanceController extends Controller
      */
     public function actionIndex()
     {
-        $searchModel = new UserBalanceSearch();
-        $dataProvider = $searchModel->search($this->request->queryParams);
+        $balance_lst = UserBalance::find()
+            ->where(['user_id'=>\Yii::$app->user->identity->getId()])
+            ->all();
 
         return $this->render('index', [
-            'searchModel' => $searchModel,
-            'dataProvider' => $dataProvider,
+            'balance_lst' => $balance_lst,
         ]);
     }
 
@@ -70,8 +70,10 @@ class UserBalanceController extends Controller
         $model = new UserBalance();
 
         if ($this->request->isPost) {
-            if ($model->load($this->request->post()) && $model->save()) {
-                return $this->redirect(['view', 'id' => $model->id]);
+            $model->load($this->request->post());
+            $model->user_id = \Yii::$app->user->identity->getId();
+            if ($model->save()) {
+                return $this->redirect(['index']);
             }
         } else {
             $model->loadDefaultValues();

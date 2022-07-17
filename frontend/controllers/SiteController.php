@@ -3,6 +3,7 @@
 namespace frontend\controllers;
 
 use common\models\Prof;
+use common\models\User;
 use frontend\models\ResendVerificationEmailForm;
 use frontend\models\VerifyEmailForm;
 use Yii;
@@ -258,9 +259,13 @@ class SiteController extends Controller
 
     public function actionRegClient(){
         $model = new SignupForm();
-        if ($model->load(Yii::$app->request->post()) && $model->signup()) {
-            Yii::$app->session->setFlash('success', 'Thank you for registration. Please check your inbox for verification email.');
-            return $this->goHome();
+        if ($this->request->isPost) {
+            $model->load($this->request->post());
+            $model->type_id = 2;
+            if ($model->signup()) {
+                Yii::$app->session->setFlash('success', 'Thank you for registration. Please check your inbox for verification email.');
+                return $this->goHome();
+            }
         }
 
         return $this->render('reg_client', [
@@ -269,10 +274,15 @@ class SiteController extends Controller
     }
 
     public function actionRegMaster(){
+
         $model = new SignupForm();
-        if ($model->load(Yii::$app->request->post()) && $model->signup()) {
-            Yii::$app->session->setFlash('success', 'Thank you for registration. Please check your inbox for verification email.');
-            return $this->goHome();
+        if ($this->request->isPost) {
+            $model->load($this->request->post());
+            $model->type_id = 2;
+            if ($model->signup()) {
+                Yii::$app->session->setFlash('success', 'Thank you for registration. Please check your inbox for verification email.');
+                return $this->goHome();
+            }
         }
         $profs = Prof::find()->all();
 
@@ -281,5 +291,14 @@ class SiteController extends Controller
             'profs' => $profs,
         ]);
     }
+
+    public function actionPayForms(){
+        return $this->render('pay-forms');
+    }
+
+    public function actionPrivatePolicy(){
+        return $this->render('private-policy');
+    }
+
 
 }

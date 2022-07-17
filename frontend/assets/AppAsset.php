@@ -19,6 +19,7 @@ class AppAsset extends AssetBundle
         'css/owl.theme.default.min.css',
         'css/site.css',
         'css/style.css',
+        'css/new_style.css',
     ];
     public $js = [
         'js/bootstrap.bundle.min.js',

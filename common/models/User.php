@@ -242,5 +242,14 @@ class User extends ActiveRecord implements IdentityInterface
         return $this->hasMany(SupportTicket::className(),['src_user_id'=>'id']);
     }
 
+    public function getIsmaster(){
+        return $this->info->type_id == 2;
+    }
+
+    public function getIsclient(){
+        return $this->info->type_id == 1;
+    }
+
+
 
 }

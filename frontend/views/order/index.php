@@ -14,9 +14,11 @@ $this->title = 'Orders';
 $this->params['breadcrumbs'][] = $this->title;
 ?>
 <div class="order-index">
+    <?if (Yii::$app->user->identity->isclient) {?>
     <p>
         <?= Html::a('Добавить', ['create'], ['class' => 'btn btn-success']) ?>
     </p>
+    <? }?>
 
     <section id="list_jobs">
         <div class="container">
@@ -78,14 +80,27 @@ $this->params['breadcrumbs'][] = $this->title;
                             </div>
 
                             <div class="btn_price">
-                                <button>Взять заказ</button>
+                                <?if (Yii::$app->user->identity->ismaster && !$order->ismy) {?>
+                                    <?php
+
+                                    $form = \yii\widgets\ActiveForm::begin(['action' => ['order/take-order'],]); ?>
+                                        <input type="hidden" value="<?=$order->id?>" name="ordid">
+                                        <button>Взять заказ</button>
+                                    <?php \yii\widgets\ActiveForm::end(); ?>
+                                <?}?>
                                 <span><?=$order->price?> <i>руб.</i></span>
                             </div>
 
                             <div class="client_contact">
                                 <div class="phone">
                                     <img src="/images/phone.svg">
-                                    <div class="phone_num">+7 999 ...</div>
+                                    <div class="phone_num">
+                                        <?if ($order->ismy) {
+                                            echo $order->phone;
+                                        } else {
+                                            echo '+7 999 ...' ;
+                                        } ?>
+                                    </div>
                                 </div>
 
                                 <div class="txt_warning">

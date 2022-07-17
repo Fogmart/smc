@@ -64,7 +64,7 @@ AppAsset::register($this);
                                     </a>
                                     <div class="dropdown-menu" aria-labelledby="navbarDropdown">
                                         <a class="dropdown-item" href="/profile">Профиль</a>
-                                        <a class="dropdown-item" href="#">Баланс</a>
+                                        <a class="dropdown-item" href="/user-balance">Баланс</a>
                                         <a class="dropdown-item" href="#">История заказов</a>
                                         <a class="dropdown-item" href="#">Уведомления</a>
                                         <div class="dropdown-divider"></div>

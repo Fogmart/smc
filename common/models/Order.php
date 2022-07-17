@@ -104,4 +104,8 @@ class Order extends \yii\db\ActiveRecord
         return date('d.m.Y', $this->whncrt);
     }
 
+    public function getIsmy(){
+        return $this->take_by == \Yii::$app->user->identity->getId();
+    }
+
 }

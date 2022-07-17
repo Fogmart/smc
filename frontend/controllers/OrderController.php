@@ -38,13 +38,15 @@ class OrderController extends Controller
      */
     public function actionIndex()
     {
-        $orders = Order::find()->all();
+        $orders = Order::find()
+            ->where(['city_id'=> \Yii::$app->user->identity->info->city_id])->all();
 
         return $this->render('index', compact('orders'));
     }
 
     public function actionOwnOrders()
     {
+
         $orders = \Yii::$app->user->identity->ownorders;
 
         return $this->render('index', compact('orders'));
@@ -55,6 +57,17 @@ class OrderController extends Controller
         $orders = \Yii::$app->user->identity->myorders;
 
         return $this->render('index', compact('orders'));
+    }
+
+    public function actionTakeOrder(){
+        if ($this->request->isPost) {
+            $ordid = $this->request->post('ordid');
+            $order = Order::find()->where(['id'=>$ordid])->one();
+            $order->take_by = \Yii::$app->user->identity->getId();
+            $order->save();
+            return $this->redirect(['my-orders']);
+        }
+
     }
 
 
@@ -146,6 +159,22 @@ class OrderController extends Controller
         }
 
         throw new NotFoundHttpException('The requested page does not exist.');
+    }
+
+    public function actionMyOrdersClient(){
+        return $this->render('my-orders-client');
+    }
+
+    public function actionMyOrdersMaster(){
+        return $this->render('my-orders-master');
+    }
+
+    public function actionFinishedOrdersClient(){
+        return $this->render('finished-orders-client');
+    }
+
+    public function actionFinishedOrdersMaster(){
+        return $this->render('finished-orders-master');
     }
 
 

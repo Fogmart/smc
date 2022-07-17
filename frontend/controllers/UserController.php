@@ -10,4 +10,12 @@ class UserController extends \yii\web\Controller
         return $this->render('index');
     }
 
+    public function actionLkClient(){
+        return $this->render('lk-client');
+    }
+
+    public function actionLkMaster(){
+        return $this->render('lk-master');
+    }
+
 }

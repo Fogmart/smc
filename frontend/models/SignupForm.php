@@ -34,12 +34,11 @@ class SignupForm extends Model
             ['username', 'string', 'min' => 2, 'max' => 255],
 
             ['email', 'trim'],
-            ['email', 'required'],
             ['email', 'email'],
             ['email', 'string', 'max' => 255],
             ['email', 'unique', 'targetClass' => '\common\models\User', 'message' => 'email уже занят'],
 
-            ['password', 'required'],
+//            ['password', 'required'],
             ['password', 'string', 'min' => Yii::$app->params['user.passwordMinLength']],
 
             [['type_id'], 'integer'],
@@ -58,6 +57,7 @@ class SignupForm extends Model
      */
     public function signup()
     {
+        if (!$this->username) $this->username = $this->fio;
         if (!$this->validate()) {
             return null;
         }
