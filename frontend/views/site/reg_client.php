@@ -41,6 +41,11 @@ use yii\helpers\ArrayHelper;
             <div class="reg_contact">
                 <h3>Контактная информация</h3>
                 <?php $form = ActiveForm::begin(['id' => 'form-signup']); ?>
+                <?= $form->field($model, 'email')
+                    ->textInput(['autofocus' => true, 'placeholder' => "Email*", 'class'=>'input'])->label('') ?>
+                <?= $form->field($model, 'password')
+                    ->textInput(['autofocus' => true, 'placeholder' => "Пароль*", 'class'=>'input'])->label('') ?>
+
 
                 <?= $form->field($model, 'phone')
                     ->textInput(['autofocus' => true, 'placeholder' => "Телефон*", 'class'=>'input'])->label('') ?>

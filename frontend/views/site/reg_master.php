@@ -33,8 +33,16 @@ use yii\helpers\ArrayHelper;
         <div class="col-md-5">
             <div class="reg_contact">
                 <h3>Контактная информация</h3>
+                <?= $form->field($model, 'email')
+                    ->textInput(['autofocus' => true, 'placeholder' => "Email*", 'class'=>'input'])->label('') ?>
+                <?= $form->field($model, 'password')
+                    ->textInput(['autofocus' => true, 'placeholder' => "Пароль*", 'class'=>'input'])->label('') ?>
+
+
                 <?= $form->field($model, 'phone')
                     ->textInput(['autofocus' => true, 'placeholder' => "Телефон*", 'class'=>'input'])->label('') ?>
+
+
                 <?= $form->field($model, 'fio')
                     ->textInput(['placeholder' => "ФИО*", 'class'=>'input'])->label('') ?>
 
