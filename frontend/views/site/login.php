@@ -67,8 +67,9 @@ $this->params['breadcrumbs'][] = $this->title;
                     <?php ActiveForm::end(); ?>
 
                     <p class="m_t_15"><a href="#">Забыли пароль?</a></p>
+                    <p class="m_t_15">Нет аккаунта? <a href="/site/variants-reg">Зарегистрируйтесь</a></p>
                 </div>
-                <p class="text-grey">Нет аккаунта? <a href="/site/variants-reg">Зарегистрируйтесь</a></p>
+                
                 <p class="text-grey">Центр поддержки клиентов: <a href="#">8 800 100 00 00</a><br>
                     Звонок по России бесплатный</p>
             </div>

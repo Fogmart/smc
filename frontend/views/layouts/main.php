@@ -40,7 +40,7 @@ AppAsset::register($this);
                         <button class="navbar-toggler" type="button" data-toggle="offcanvas">
                             <span class="navbar-toggler-icon"></span>
                         </button>
-                        <a class="navbar-brand" href="#"><img src="/images/logo.svg"></a>
+                        <a class="navbar-brand" href="/"><img src="/images/logo.svg"></a>
                         <div class="navbar-collapse offcanvas-collapse" id="navbarSupportedContent">
                             <button class="offcanvas-close" type="button" data-toggle="offcanvas-close">
                                 ×
@@ -90,11 +90,35 @@ AppAsset::register($this);
     </div>
 </main>
 
-<footer class="footer mt-auto py-3 text-muted">
+<footer>
     <div class="container">
+        <div class="row">
+            <div class="col-md-4">
+                <ul>
+                    <li><a href="">Способы оплаты</a></li>
+                    <li><a href="">Политика конфиденциальности</a></li>
+                </ul>
+                
+                
+            </div>
 
+<div class="col-md-4">
+                
+            </div>
+
+<div class="col-md-4">
+                <p>Центр поддержки клиентов: <a href="">8 800 100 00 00</a><br>
+Звонок по России бесплатный</p>
+            </div>
+        </div>
     </div>
 </footer>
+
+
+
+
+
+
 
 <?php $this->endBody() ?>
 </body>
