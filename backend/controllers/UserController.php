@@ -3,6 +3,7 @@
 namespace backend\controllers;
 
 use common\models\User;
+use common\models\UserInfo;
 use common\models\UserSearch;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
@@ -24,7 +25,7 @@ class UserController extends Controller
                 'verbs' => [
                     'class' => VerbFilter::className(),
                     'actions' => [
-                        'delete' => ['POST'],
+
                     ],
                 ],
             ]
@@ -51,19 +52,18 @@ class UserController extends Controller
      */
     public function actionCreate()
     {
-        $model = new User();
+        $user = new User();
+        $user_info = new UserInfo();
 
         if ($this->request->isPost) {
-            if ($model->load($this->request->post()) && $model->save()) {
-                return $this->redirect(['view', 'id' => $model->id]);
-            }
-        } else {
-            $model->loadDefaultValues();
+            $user->load($this->request->post());
+            $user->save();
+            $user_info->load($this->request->post());
+            $user_info->user_id = $user->id;
+            $user_info->save();
         }
 
-        return $this->render('create', [
-            'model' => $model,
-        ]);
+        return $this->render('update', compact(['user', 'user_info']));
     }
 
     /**
@@ -73,17 +73,20 @@ class UserController extends Controller
      * @return string|\yii\web\Response
      * @throws NotFoundHttpException if the model cannot be found
      */
-    public function actionUpdate($id)
+    public function actionUpdate($id = "")
     {
-        $model = $this->findModel($id);
+        $user = $this->findModel($id);
+        $user_info = $user->info;
 
-        if ($this->request->isPost && $model->load($this->request->post()) && $model->save()) {
-            return $this->redirect(['view', 'id' => $model->id]);
+        if ($this->request->isPost ) {
+            $user->load($this->request->post());
+            $user->save();
+            $user_info->load($this->request->post());
+            $user_info->save();
+            return $this->redirect(['index']);
         }
 
-        return $this->render('update', [
-            'model' => $model,
-        ]);
+        return $this->render('update', compact(['user', 'user_info']));
     }
 
     /**
