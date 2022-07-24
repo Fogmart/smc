@@ -3,7 +3,10 @@
 namespace backend\controllers;
 
 use common\models\City;
+use common\models\CityPrcnt;
 use common\models\CitySearch;
+use common\models\Prof;
+use yii\helpers\ArrayHelper;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
@@ -144,4 +147,38 @@ class CityController extends Controller
 
         throw new NotFoundHttpException('The requested page does not exist.');
     }
+
+    public function actionProfProcent(){
+
+        $city ="";
+
+        if ($this->request->isPost){
+            $city = $this->request->post('city_slct');
+            $profs = Prof::find()->all();
+
+            $prof_prcnt = ArrayHelper::map(
+                CityPrcnt::find()->where(['city_id'=>$city ])->all(),
+                'prof_id', 'prcnt'
+            );
+        }
+        return $this->render('prof_prcnt', compact('city', 'profs', 'prof_prcnt') );
+    }
+
+    public function actionProfSave(){
+        $city_id = $this->request->get('city_id');
+        $prof_id = $this->request->get('prof_id');
+        $prcnt = $this->request->get('prcnt');
+
+        $model = CityPrcnt::find()->where(['city_id'=>$city_id, 'prof_id'=>$prof_id])->one();
+        if (!$model) {
+            $model = new CityPrcnt;
+            $model->city_id = $city_id;
+            $model->prof_id = $prof_id;
+        }
+        $model->prcnt = $prcnt;
+        $model->save();
+
+    }
+
+
 }
