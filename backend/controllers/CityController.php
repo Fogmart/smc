@@ -151,6 +151,8 @@ class CityController extends Controller
     public function actionProfProcent(){
 
         $city ="";
+        $profs ="";
+        $prof_prcnt ="";
 
         if ($this->request->isPost){
             $city = $this->request->post('city_slct');
