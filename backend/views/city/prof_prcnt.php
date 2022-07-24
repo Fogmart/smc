@@ -42,7 +42,10 @@ use yii\widgets\Pjax;
                     <tr>
                         <td><?=$prof->name?></td>
                         <td>
-                            <input value="<?=$prof_prcnt[$prof->id]?>" onchange="prof_save('<?=$city?>', '<?=$prof->id?>', this.value )">
+                            <input
+                                    value="<?=(isset($prof_prcnt[$prof->id])) ? $prof_prcnt[$prof->id] : ''?>"
+                                    onchange="prof_save('<?=$city?>', '<?=$prof->id?>', this.value )"
+                            />
 
                         </td>
                     </tr>
@@ -58,6 +61,6 @@ use yii\widgets\Pjax;
 
 <script>
     function prof_save(city_id, prof_id, val) {
-        $.get('/city/prof-save?city_id='+city_id+'&prof_id='+prof_id+ '&prcnt='+val)
+        $.get('index.php?r=city%2Fprof-save&city_id='+city_id+'&prof_id='+prof_id+ '&prcnt='+val)
     }
 </script>

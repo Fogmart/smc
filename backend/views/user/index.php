@@ -31,13 +31,13 @@ $this->params['breadcrumbs'][] = $this->title;
         <?foreach ($user_lst as $i=>$user) {?>
             <tr>
                 <td><?=$i+1?></td>
-                <td><?=$user->fio?></td>
+                <td><?=(isset($user->info)) ? $user->fio : ''?></td>
                 <td><?=$user->email?></td>
-                <td><?=$user->phone?></td>
-                <td><?=$user->info->city->name?></td>
+                <td><?=(isset($user->info)) ? $user->phone : '' ?></td>
+                <td><?=(isset($user->info->city)) ? $user->info->city->name : ''?></td>
 
                 <td>
-                    <a href="/user/update?id=<?=$user->id?>">edt</a>
+                    <a href="index.php?r=user%2Fupdate&id=<?=$user->id?>">edt</a>
 
                     <button onclick="user_delete(<?=$user->id?>, '<?=$user->email?>')" >del</button>
 
@@ -54,7 +54,7 @@ $this->params['breadcrumbs'][] = $this->title;
 <script>
     function user_delete(id, email) {
         if (confirm("Удалить пользователя " + email + "? ")) {
-            document.location = "/user/delete?id="+id
+            document.location = "index.php?r=user%2Fdelete&id="+id
         }
     }
 </script>

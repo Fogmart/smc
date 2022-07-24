@@ -9,7 +9,7 @@ use yii\helpers\ArrayHelper;
 /* @var $user common\models\User */
 /* @var $user_info common\models\UserInfo */
 
-$this->title = 'Update User: ' . $model->id;
+$this->title = 'Update User ';
 
 ?>
 <div class="user-edit">
