@@ -5,7 +5,7 @@ use yii\helpers\Html;
 /* @var $this yii\web\View */
 /* @var $model common\models\UserBalance */
 
-$this->title = 'Create User Balance';
+$this->title = 'Пополнить баланс';
 $this->params['breadcrumbs'][] = ['label' => 'User Balances', 'url' => ['index']];
 $this->params['breadcrumbs'][] = $this->title;
 ?>

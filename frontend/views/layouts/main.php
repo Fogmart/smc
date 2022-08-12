@@ -63,7 +63,11 @@ AppAsset::register($this);
                                         <img src="<?=Yii::$app->user->identity->avatar?>">
                                     </a>
                                     <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                                        <a class="dropdown-item" href="/profile">Профиль</a>
+                                        <?if (Yii::$app->user->identity->ismaster ) {?>
+                                            <a class="dropdown-item" href="/user/lk-master">Профиль</a>
+                                        <? } else {?>
+                                            <a class="dropdown-item" href="/profile">Профиль</a>
+                                        <? } ?>
                                         <a class="dropdown-item" href="/user-balance">Баланс</a>
                                         <a class="dropdown-item" href="#">История заказов</a>
                                         <a class="dropdown-item" href="#">Уведомления</a>

@@ -4,7 +4,7 @@ use yii\helpers\Html;
 use yii\widgets\DetailView;
 
 /* @var $this yii\web\View */
-/* @var $model common\models\Order */
+/* @var $user common\models\User */
 
 
 \yii\web\YiiAsset::register($this);
@@ -35,13 +35,13 @@ use yii\widgets\DetailView;
                     </div>
                     <div class="profile_info">
                         <div class="fio">
-                            Иванов Иван Иванович
+                            <?=$user->fio?>
                         </div>
                         <div class="proff">
                             электрик
                         </div>
                         <div class="city">
-                            Москва
+                            <?=$user->info->city->name?>
                         </div>
                     </div>
                 </div>
@@ -57,9 +57,9 @@ use yii\widgets\DetailView;
                 <div class="profile_balance">
                     <div class="balance">
                         <span>Баланс:</span>
-                        <div>2300 руб.</div>
+                        <div> <?=$user->info->balance?> руб.</div>
                     </div>
-                    <button>Пополнить баланс</button>
+                    <a href="/user-balance/">Пополнить баланс</a>
                 </div>
             </div>
 
@@ -82,247 +82,16 @@ use yii\widgets\DetailView;
 
 
 <div class="owl-carousel owl-theme" id="slider_active_order">
-    
-    <div class="slide">
-        <div class="col-md-12">
-                <div class="job_item">
-                    <div class="top_item">
-                        <div class="item_left">
-                            <h2>Ремонт сантехники</h2>
-                            <div class="city">
-                                Москва
-                            </div>
-                            <div class="raion">
-                                Красноселький район
-                            </div>
-                            <div class="date">03.06.2022</div>
-                        </div>
-                        <div class="item_right">
-                            <div class="id_item">
-                                ID 123456
-                            </div>
 
-                            <div class="prof">
-                                Сантехник
-                            </div>
+    <?foreach ($user->myorders as $cnt_my_ord=>$order) {
+        echo $this->render('/order/order', [
+            'order' => $order,
+            'main_div_class' => 'col-md-12',
+        ]);
+    }
+    if ($cnt_my_ord > 4) $cnt_my_ord = 4;
+    ?>
 
-                            <div class="raiting">
-                                <p>Сложность</p>
-                                <img src="/images/star_full.svg">
-                                <img src="/images/star_full.svg">
-                                <img src="/images/star_full.svg">
-                                <img src="/images/star_empty.svg">
-                                <img src="/images/star_empty.svg">
-                            </div>
-
-                            <div class="status_performed">
-                                в работе
-                            </div>
-                        </div>
-                    </div>
-                    <div class="description">
-                        Описание заказа. Описание заказа. Описание заказа. Описание заказа. Описание заказа. 
-                    </div>
-
-                    <div class="btn_price">
-                        <button>Закрыть заявку</button>
-                        <span>1000 <i>руб.</i></span>
-                    </div>
-
-                    <div class="client_contact_visible">
-                        <div class="phone">
-                            <img src="/images/phone.svg">
-                            <div class="phone_num"><a href="tel:+79991112233">+7 999 111-22-33</a></div>
-                        </div>
-
-                        <div class="client_block">
-                            Алексей <img src="/images/avatar.png">
-                        </div>
-                    </div>
-                </div>
-            </div>
-    </div>
-
-
-    <div class="slide">
-        <div class="col-md-12">
-                <div class="job_item">
-                    <div class="top_item">
-                        <div class="item_left">
-                            <h2>Ремонт сантехники</h2>
-                            <div class="city">
-                                Москва
-                            </div>
-                            <div class="raion">
-                                Красноселький район
-                            </div>
-                            <div class="date">03.06.2022</div>
-                        </div>
-                        <div class="item_right">
-                            <div class="id_item">
-                                ID 123456
-                            </div>
-
-                            <div class="prof">
-                                Сантехник
-                            </div>
-
-                            <div class="raiting">
-                                <p>Сложность</p>
-                                <img src="/images/star_full.svg">
-                                <img src="/images/star_full.svg">
-                                <img src="/images/star_full.svg">
-                                <img src="/images/star_empty.svg">
-                                <img src="/images/star_empty.svg">
-                            </div>
-
-                            <div class="status_performed">
-                                в работе
-                            </div>
-                        </div>
-                    </div>
-                    <div class="description">
-                        Описание заказа. Описание заказа. Описание заказа. Описание заказа. Описание заказа. 
-                    </div>
-
-                    <div class="btn_price">
-                        <button>Закрыть заявку</button>
-                        <span>1000 <i>руб.</i></span>
-                    </div>
-
-                    <div class="client_contact_visible">
-                        <div class="phone">
-                            <img src="/images/phone.svg">
-                            <div class="phone_num"><a href="tel:+79991112233">+7 999 111-22-33</a></div>
-                        </div>
-
-                        <div class="client_block">
-                            Алексей <img src="/images/avatar.png">
-                        </div>
-                    </div>
-                </div>
-            </div>
-    </div>
-
-    <div class="slide">
-        <div class="col-md-12">
-                <div class="job_item">
-                    <div class="top_item">
-                        <div class="item_left">
-                            <h2>Ремонт сантехники</h2>
-                            <div class="city">
-                                Москва
-                            </div>
-                            <div class="raion">
-                                Красноселький район
-                            </div>
-                            <div class="date">03.06.2022</div>
-                        </div>
-                        <div class="item_right">
-                            <div class="id_item">
-                                ID 123456
-                            </div>
-
-                            <div class="prof">
-                                Сантехник
-                            </div>
-
-                            <div class="raiting">
-                                <p>Сложность</p>
-                                <img src="/images/star_full.svg">
-                                <img src="/images/star_full.svg">
-                                <img src="/images/star_full.svg">
-                                <img src="/images/star_empty.svg">
-                                <img src="/images/star_empty.svg">
-                            </div>
-
-                            <div class="status_performed">
-                                в работе
-                            </div>
-                        </div>
-                    </div>
-                    <div class="description">
-                        Описание заказа. Описание заказа. Описание заказа. Описание заказа. Описание заказа. 
-                    </div>
-
-                    <div class="btn_price">
-                        <button>Закрыть заявку</button>
-                        <span>1000 <i>руб.</i></span>
-                    </div>
-
-                    <div class="client_contact_visible">
-                        <div class="phone">
-                            <img src="/images/phone.svg">
-                            <div class="phone_num"><a href="tel:+79991112233">+7 999 111-22-33</a></div>
-                        </div>
-
-                        <div class="client_block">
-                            Алексей <img src="/images/avatar.png">
-                        </div>
-                    </div>
-                </div>
-            </div>
-    </div>
-
-    <div class="slide">
-        <div class="col-md-12">
-                <div class="job_item">
-                    <div class="top_item">
-                        <div class="item_left">
-                            <h2>Ремонт сантехники</h2>
-                            <div class="city">
-                                Москва
-                            </div>
-                            <div class="raion">
-                                Красноселький район
-                            </div>
-                            <div class="date">03.06.2022</div>
-                        </div>
-                        <div class="item_right">
-                            <div class="id_item">
-                                ID 123456
-                            </div>
-
-                            <div class="prof">
-                                Сантехник
-                            </div>
-
-                            <div class="raiting">
-                                <p>Сложность</p>
-                                <img src="/images/star_full.svg">
-                                <img src="/images/star_full.svg">
-                                <img src="/images/star_full.svg">
-                                <img src="/images/star_empty.svg">
-                                <img src="/images/star_empty.svg">
-                            </div>
-
-                            <div class="status_performed">
-                                в работе
-                            </div>
-                        </div>
-                    </div>
-                    <div class="description">
-                        Описание заказа. Описание заказа. Описание заказа. Описание заказа. Описание заказа. 
-                    </div>
-
-                    <div class="btn_price">
-                        <button>Закрыть заявку</button>
-                        <span>1000 <i>руб.</i></span>
-                    </div>
-
-                    <div class="client_contact_visible">
-                        <div class="phone">
-                            <img src="/images/phone.svg">
-                            <div class="phone_num"><a href="tel:+79991112233">+7 999 111-22-33</a></div>
-                        </div>
-
-                        <div class="client_block">
-                            Алексей <img src="/images/avatar.png">
-                        </div>
-                    </div>
-                </div>
-            </div>
-    </div>
     
 </div>
 
@@ -558,24 +327,24 @@ use yii\widgets\DetailView;
 
 <script type="text/javascript">
     $(document).ready(function(){
-    const slider = $("#slider_active_order").owlCarousel({
-        loop:true,
-        margin:10,
-        nav:true,
-        dots: false,
-        items:4,
-        responsive:{
-            0:{
-                items:1
-            },
-            600:{
-                items:2
-            },
-            1000:{
-                items:3
+        const slider = $("#slider_active_order").owlCarousel({
+            loop:true,
+            margin:10,
+            nav:true,
+            dots: false,
+            items: 4,
+            responsive:{
+                0:{
+                    items:1
+                },
+                600:{
+                    items:2
+                },
+                1000:{
+                    items:3
+                }
             }
-        }
-    });
+        });
 });
 </script>
 

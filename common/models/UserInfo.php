@@ -51,6 +51,7 @@ class UserInfo extends \yii\db\ActiveRecord
             [['phone'], 'string', 'max' => 20],
             [['newdoc1'], 'safe'],
             [['doc1'], 'safe'],
+            [['balance'], 'safe'],
         ];
     }
 

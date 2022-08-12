@@ -30,6 +30,12 @@ class Order extends \yii\db\ActiveRecord
         '5'=>"5",
     ];
 
+    const STATUS_NAME = [
+       '' => "Новый",
+       '1' => "Ожидает",
+       '9' => "Завершен",
+    ];
+
     /**
      * {@inheritdoc}
      */
@@ -106,6 +112,10 @@ class Order extends \yii\db\ActiveRecord
 
     public function getIsmy(){
         return $this->take_by == \Yii::$app->user->identity->getId();
+    }
+
+    public function getStatusname(){
+        return self::STATUS_NAME[$this->status];
     }
 
 }
