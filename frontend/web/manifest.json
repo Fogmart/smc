@@ -1,0 +1,51 @@
+{
+  "name": "SMC | качество, быстрота, надёжность",
+  "short_name": "SMC",
+  "icons": [
+    {
+      "src": "/images/logo_white.svg",
+      "sizes": "70x70",
+      "type": "image/svg+xml"
+    },
+    {
+      "src": "/images/logo_white.svg",
+      "sizes": "144x144",
+      "type": "image/svg+xml"
+    },
+    {
+      "src": "/images/logo_white.svg",
+      "sizes": "150x150",
+      "type": "image/svg+xml"
+    },
+    {
+      "src": "/images/logo_white.svg",
+      "sizes": "310x150",
+      "type": "image/svg+xml"
+    },
+    {
+      "src": "/images/logo_white.svg",
+      "sizes": "310x150",
+      "type": "image/svg+xml"
+    },
+    {
+      "src": "/images/logo_white.svg",
+      "sizes": "310x310",
+      "type": "image/svg+xml"
+    },
+    {
+      "src": "/images/logo_white.svg",
+      "sizes": "310x310",
+      "type": "image/svg+xml"
+    },
+    {
+      "src": "/images/logo_white.svg",
+      "sizes": "512x512",
+      "type": "image/svg+xml"
+    }
+  ],
+  "lang": "ru-RU",
+  "start_url": "/index.php",
+  "display": "standalone",
+  "background_color": "black",
+  "theme_color": "black"
+}
