@@ -100,4 +100,12 @@ class UserInfo extends \yii\db\ActiveRecord
     public function getCity(){
         return $this->hasOne(City::className(),['id'=>'city_id']);
     }
+
+    public function getUrl_after_save(){
+        if ($this->type_id == '1') return 'clients';
+        if ($this->type_id == '2') return 'masters';
+        if ($this->type_id == '3') return 'firms';
+        return 'index';
+
+    }
 }
