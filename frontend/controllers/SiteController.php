@@ -261,10 +261,10 @@ class SiteController extends Controller
         $model = new SignupForm();
         if ($this->request->isPost) {
             $model->load($this->request->post());
-            $model->type_id = 2;
+            $model->type_id = 1;
             if ($model->signup()) {
-//                Yii::$app->session->setFlash('success', 'Thank you for registration. Please check your inbox for verification email.');
-                return $this->goHome();
+                Yii::$app->session->setFlash('success', 'Вы успешно зарегистрировались. На ваш электронный почтовый адрес направлено письмо для активации аккаунта. После активации аккаунта вы сможете пользоваться сервисом.');
+                return $this->redirect(['site/login']);
             }
         }
 
@@ -274,18 +274,25 @@ class SiteController extends Controller
     }
 
     public function actionRegMaster(){
-
         $model = new SignupForm();
         if ($this->request->isPost) {
             $model->load($this->request->post());
+
+            //echo '<pre>';
+            //print_r(Yii::$app->session->getFlash());
+            //echo '</pre>';
+            //Yii::debug('debug',  print_r($model, true));
+
             $model->type_id = 2;
             if ($model->signup()) {
-//                Yii::$app->session->setFlash('success', 'Thank you for registration. Please check your inbox for verification email.');
-                return $this->goHome();
+                //Yii::$app->session->setFlash('success', 'Thank you for registration. Please check your inbox for verification email.');
+                //return $this->goHome();
+                Yii::$app->session->setFlash('success', 'Вы успешно зарегистрировались. В ближайшее время модератор проверить ваш профиль и произведет активацию, после чего вы сможете пользоваться сервисом.');
+                return $this->redirect(['site/login']);
             }
         }
-        $profs = Prof::find()->all();
 
+        $profs = Prof::find()->all();
         return $this->render('reg_master', [
             'model' => $model,
             'profs' => $profs,
