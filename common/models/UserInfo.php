@@ -49,7 +49,7 @@ class UserInfo extends \yii\db\ActiveRecord
             [['fio'], 'string', 'max' => 100],
             [['avatar'], 'string', 'max' => 500],
             [['phone'], 'string', 'max' => 20],
-            [['newdoc1'], 'safe'],
+            [['newavatar','newdoc1', 'newdoc2', 'newdoc3'], 'safe'],
             [['doc1'], 'safe'],
             [['balance'], 'safe'],
         ];
@@ -89,7 +89,7 @@ class UserInfo extends \yii\db\ActiveRecord
             $this->doc2 = self::IMG_URL . $this->user_id . '__doc2.' . $this->newdoc2->extension;
             $this->newdoc2->saveAs($this->doc2);
         }
-        if ($this->newdoc1) {
+        if ($this->newdoc3) {
             $this->doc3 = self::IMG_URL . $this->user_id . '__doc3.' . $this->newdoc3->extension;
             $this->newdoc3->saveAs($this->doc3);
         }

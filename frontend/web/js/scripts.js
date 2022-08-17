@@ -74,5 +74,10 @@ $(function(){
     initFileInput("#userinfo-newdoc1")
     initFileInput("#userinfo-newdoc2")
     initFileInput("#userinfo-newdoc3")
+
+    initFileInput("#signupform-newavatar")
+    initFileInput("#signupform-newdoc1")
+    initFileInput("#signupform-newdoc2")
+    initFileInput("#signupform-newdoc3")
 });
 

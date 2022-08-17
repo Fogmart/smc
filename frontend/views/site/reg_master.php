@@ -28,7 +28,7 @@ use yii\helpers\ArrayHelper;
             <h1>Регистрация мастера</h1>
         </div>
     </div>
-    <?php $form = ActiveForm::begin(['id' => 'form-signup']); ?>
+    <?php $form = ActiveForm::begin(['id' => 'form-signup', 'options' => ['enctype' => 'multipart/form-data']]); ?>
     <div class="row">
         <div class="col-md-5">
             <div class="reg_contact">
@@ -54,9 +54,12 @@ use yii\helpers\ArrayHelper;
 
 <div class="avatar_upload">
     <img src="/images/avatar.png">
-    <div class="">
+    <div class="file_upload">
         <p>Аватар пользователя</p>
-        <button class="button upload">Загрузить<i></i></button>
+
+        <span><img src="/images/file_upload.svg"> <span id="signupform-newavatar-lbl"/></span>
+        <?= $form->field($model, 'newavatar')->fileInput()->label('') ?>
+
     </div>
 </div>
             </div>
@@ -73,26 +76,23 @@ use yii\helpers\ArrayHelper;
                    
                     <div class="file_upload">
                         <p>Главная страница</p>
-                        
-                        <span><img src="/images/file_upload.svg"> file-pasport.jpg</span>
+
+                        <span><img src="/images/file_upload.svg"> <span id="signupform-newdoc1-lbl"/></span>
+                        <?= $form->field($model, 'newdoc1')->fileInput()->label('') ?>
+
                     </div>
 
-                     <div class="p_upload_btn">
-                        
-        <button class="button upload">Загрузить<i></i></button>
-                    </div>
+
                 </div>
 
                 <div class="p_upload_item">
                     <div class="file_upload">
                         <p>Страница прописки</p>
-                        
-                        <span><img src="/images/file_upload.svg">file-regitration.jpg</span>
+
+                        <span><img src="/images/file_upload.svg"> <span id="signupform-newdoc2-lbl"/></span>
+                        <?= $form->field($model, 'newdoc2')->fileInput()->label('') ?>
                     </div>
-                    <div class="p_upload_btn">
-                        
-        <button class="button upload">Загрузить<i></i></button>
-                    </div>
+
                     
                 </div>
 
@@ -100,13 +100,11 @@ use yii\helpers\ArrayHelper;
                     
                     <div class="file_upload">
                         <p>Селфи с паспортом</p>
-                        
-                        <span><img src="/images/file_upload.svg">file-selfi.jpg</span>
+
+                        <span><img src="/images/file_upload.svg"> <span id="signupform-newdoc3-lbl"/></span>
+                        <?= $form->field($model, 'newdoc3')->fileInput()->label('') ?>
                     </div>
-                    <div class="p_upload_btn">
-                        
-        <button class="button upload">Загрузить<i></i></button>
-                    </div>
+
                 </div>
             </div>
             </div>
