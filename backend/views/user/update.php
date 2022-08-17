@@ -14,8 +14,6 @@ $this->title = 'Update User ';
 ?>
 <div class="user-edit">
 
-    <h1><?= Html::encode($this->title) ?></h1>
-
     <?php $form = ActiveForm::begin(); ?>
 
     <?= $form->field($user, 'email')->textInput() ?>
@@ -34,7 +32,7 @@ $this->title = 'Update User ';
     ]);?>
 
     <div class="form-group">
-        <?= Html::submitButton('Save', ['class' => 'btn btn-success']) ?>
+        <?= Html::submitButton('Сохранить', ['class' => 'btn btn-success']) ?>
     </div>
 
     <?php ActiveForm::end(); ?>

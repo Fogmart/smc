@@ -83,7 +83,7 @@ class UserController extends Controller
             $user->save();
             $user_info->load($this->request->post());
             $user_info->save();
-            return $this->redirect(['index']);
+            return $this->redirect([$user_info->url_after_save]);
         }
 
         return $this->render('update', compact(['user', 'user_info']));
@@ -119,19 +119,18 @@ class UserController extends Controller
         throw new NotFoundHttpException('The requested page does not exist.');
     }
 
-    public function actionClients(){
-        $user_lst = User::find()->joinWith('info')->where(['type_id' => "1"])->all();
-        $title = "Клиенты";
-        return $this->render('index',
-            compact('user_lst', 'title')
-        );
-    }
 
     public function actionMasters(){
         $user_lst = User::find()->joinWith('info')->where(['type_id' => "2"])->all();
-        $title = "Мастера";
-        return $this->render('index',
-            compact('user_lst', 'title')
+        return $this->render('masters',
+            compact('user_lst')
+        );
+    }
+
+    public function actionFirms(){
+        $user_lst = User::find()->joinWith('info')->where(['type_id' => "3"])->all();
+        return $this->render('firms',
+            compact('user_lst')
         );
     }
 
@@ -143,7 +142,12 @@ class UserController extends Controller
         );
     }
 
-
+    public function actionClients(){
+        $user_lst = User::find()->joinWith('info')->where(['type_id' => "1"])->all();
+        return $this->render('clients',
+            compact('user_lst')
+        );
+    }
 
 
 }

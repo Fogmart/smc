@@ -51,33 +51,4 @@ for (i = 0; i < acc.length; i++) {
             panel.style.display = "block";
         }
     });
-}
-
-function initFileInput(id){
-    $(id).fileinput({
-        showCaption: false,
-        browseLabel: 'Загрузить<i></i>',
-        browseClass: 'button upload',
-        showUpload: false,
-        showClose: false,
-        showPreview: false,
-        showRemove: false,
-        browseIcon:""
-    });
-    $(id).on('fileloaded', function(event, file, previewId, fileId, index, reader) {
-        $(id + "-lbl").html(file.name)
-    });
-}
-
-$(function(){
-    initFileInput("#userinfo-newavatar")
-    initFileInput("#userinfo-newdoc1")
-    initFileInput("#userinfo-newdoc2")
-    initFileInput("#userinfo-newdoc3")
-
-    initFileInput("#signupform-newavatar")
-    initFileInput("#signupform-newdoc1")
-    initFileInput("#signupform-newdoc2")
-    initFileInput("#signupform-newdoc3")
-});
-
+} 

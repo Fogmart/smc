@@ -6,6 +6,7 @@ use common\models\UserInfo;
 use Yii;
 use yii\base\Model;
 use common\models\User;
+use yii\web\UploadedFile;
 
 /**
  * Signup form
@@ -21,6 +22,11 @@ class SignupForm extends Model
     public $type_id;
     public $city_id;
 
+    public $newavatar;
+    public $newdoc1;
+    public $newdoc2;
+    public $newdoc3;
+
 
     /**
      * {@inheritdoc}
@@ -29,8 +35,8 @@ class SignupForm extends Model
     {
         return [
             ['username', 'trim'],
-            ['username', 'required'],
-            ['username', 'unique', 'targetClass' => '\common\models\User', 'message' => 'Логин уже занят'],
+//            ['username', 'required'],
+//            ['username', 'unique', 'targetClass' => '\common\models\User', 'message' => 'Логин уже занят'],
             ['username', 'string', 'min' => 2, 'max' => 255],
 
             ['email', 'trim'],
@@ -46,6 +52,7 @@ class SignupForm extends Model
             [['fio'], 'string', 'max' => 100],
             [['avatar'], 'string', 'max' => 500],
             [['phone'], 'string', 'max' => 20],
+            [['newavatar','newdoc1', 'newdoc2', 'newdoc3'], 'safe'],
 
         ];
     }
@@ -57,7 +64,7 @@ class SignupForm extends Model
      */
     public function signup()
     {
-        if (!$this->username) $this->username = $this->fio;
+        if (!$this->username) $this->username = $this->email;
         if (!$this->validate()) {
             return null;
         }
@@ -76,6 +83,13 @@ class SignupForm extends Model
         $uInfo->fio = $this->fio;
         $uInfo->phone = $this->phone;
         $uInfo->city_id = $this->city_id;
+
+        $uInfo->newavatar = UploadedFile::getInstance($this, 'newavatar');
+        $uInfo->newdoc1 = UploadedFile::getInstance($this, 'newdoc1');
+        $uInfo->newdoc2 = UploadedFile::getInstance($this, 'newdoc2');
+        $uInfo->newdoc3 = UploadedFile::getInstance($this, 'newdoc3');
+
+
         $uInfo->save();
 
         return 1;

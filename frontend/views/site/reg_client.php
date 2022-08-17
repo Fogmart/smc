@@ -62,7 +62,8 @@ use yii\helpers\ArrayHelper;
     <img src="/images/avatar.png">
     <div class="">
         <p>Аватар пользователя</p>
-        <button class="button upload">Загрузить<i></i></button>
+        <span><img src="/images/file_upload.svg"> <span id="signupform-newavatar-lbl"/></span>
+        <?= $form->field($model, 'newavatar')->fileInput()->label('') ?>
     </div>
 </div>
 
