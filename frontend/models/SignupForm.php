@@ -72,10 +72,12 @@ class SignupForm extends Model
         $user = new User();
         $user->username = $this->username;
         $user->email = $this->email;
+        $user->status = '9';
         $user->setPassword($this->password);
         $user->generateAuthKey();
         $user->generateEmailVerificationToken();
         $user->save();
+
         $uInfo = new UserInfo();
         $uInfo->user_id = $user->id;
         $uInfo->type_id = $this->type_id;
@@ -88,10 +90,36 @@ class SignupForm extends Model
         $uInfo->newdoc2 = UploadedFile::getInstance($this, 'newdoc2');
         $uInfo->newdoc3 = UploadedFile::getInstance($this, 'newdoc3');
 
-
         $uInfo->save();
+        
+        // Email to user to self-activate
+        if($this->type_id == 1) {
+            $this->sendEmail($user);
+        }
+        // Email to admin to activate master
+        if($this->type_id == 2) {
+            $this->sendVerifiationEmailToAdmin($user);
+        }
 
         return 1;
+    }
+
+    /**
+     * Sends confirmation email to user
+     * @param User $user user model to with email should be send
+     * @return bool whether the email was sent
+     */
+    protected function sendVerifiationEmailToAdmin(User $user) {
+        return Yii::$app
+            ->mailer
+            ->compose(
+                ['html' => 'emailVerifyByAdmin-html', 'text' => 'emailVerifyByAdmin-text'],
+                ['user' => $user]
+            )
+            ->setFrom([Yii::$app->params['supportEmail'] => Yii::$app->name . ' robot'])
+            ->setTo(Yii::$app->params['adminEmail'])
+            ->setSubject('Регистрация на портале ' . Yii::$app->name)
+            ->send();
     }
 
     /**
@@ -109,7 +137,7 @@ class SignupForm extends Model
             )
             ->setFrom([Yii::$app->params['supportEmail'] => Yii::$app->name . ' robot'])
             ->setTo($this->email)
-            ->setSubject('Account registration at ' . Yii::$app->name)
+            ->setSubject('Регистрация на портале ' . Yii::$app->name)
             ->send();
     }
 

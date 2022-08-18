@@ -255,6 +255,10 @@ class User extends ActiveRecord implements IdentityInterface
         return $this->info->type;
     }
 
+    public function getTypeId(){
+        return $this->info->type_id;
+    }
+
     public function getOwnorders(){
         return $this->hasMany(Order::className(),['crt_by'=>'id']);
     }

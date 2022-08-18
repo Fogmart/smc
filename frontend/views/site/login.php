@@ -32,12 +32,9 @@ AppAsset::register($this);
 
 <?php
 
-
 $this->title = 'Login';
 $this->params['breadcrumbs'][] = $this->title;
 ?>
-
-
 
 
 <section id="auth_block">
@@ -49,7 +46,6 @@ $this->params['breadcrumbs'][] = $this->title;
                         <img src="/images/logo_white.svg">
                         <span>SMC</span>
                     </div>
-
                     <p>качество, быстрота, надёжность</p>
                 </div>
 
@@ -58,6 +54,24 @@ $this->params['breadcrumbs'][] = $this->title;
                     <h2 class="b_center">Вход в систему</h2>
 
                     <?php $form = ActiveForm::begin(['id' => 'login-form']); ?>
+
+                    <?php
+                    // Flash message after success registration
+                    if (Yii::$app->session->hasFlash('success')): ?>
+                        <div id="w0-success-0" class="alert-success alert alert-dismissible" role="alert">
+                            <?= Yii::$app->session->getFlash('success');?>
+                            <button type="button" class="close" data-dismiss="alert"><span aria-hidden="true">×</span></button>
+                        </div>
+                    <?php endif; ?>
+
+                    <?php
+                    // Flash message after error on registration
+                    if (Yii::$app->session->hasFlash('error')): ?>
+                        <div id="w0-success-0" class="alert-danger alert alert-dismissible" role="alert">
+                            <?= Yii::$app->session->getFlash('error');?>
+                            <button type="button" class="close" data-dismiss="alert"><span aria-hidden="true">×</span></button>
+                        </div>
+                    <?php endif; ?>
 
                     <?= $form->field($model, 'username')
                         ->textInput(['autofocus' => true, 'placeholder' => "E-mail", 'class'=>'input'])->label('') ?>
