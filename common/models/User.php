@@ -268,7 +268,7 @@ class User extends ActiveRecord implements IdentityInterface
     }
 
     public function getAvatar(){
-        return $this->info->avatar ? '/'.$this->info->avatar : UserInfo::BASE_AVATAR;
+        return $this->info->avatar ? $this->info->avatar : UserInfo::BASE_AVATAR;
     }
 
     public function getTickets(){

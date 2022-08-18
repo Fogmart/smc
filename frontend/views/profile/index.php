@@ -25,7 +25,7 @@ use yii\bootstrap4\ActiveForm; ?>
         <div class="file_upload">
             <p>Аватар</p>
             <? if ($userinfo->avatar) {?>
-                <img class="img_preview" src="/<?=$userinfo->avatar?>"/>
+                <img class="img_preview" src="<?=$userinfo->avatar?>"/>
             <? }?>
             <span><img src="/images/file_upload.svg"> <span id="userinfo-newavatar-lbl"/></span>
             <?= $form->field($userinfo, 'newavatar')->fileInput()->label('') ?>

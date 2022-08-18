@@ -22,7 +22,7 @@ class UserInfo extends \yii\db\ActiveRecord
         '10'=>"Админ",
         '11'=>"Модератор",
     ];
-    const IMG_URL = 'uploads/';
+    const IMG_URL = '/uploads/';
     const BASE_AVATAR = "/images/avatar.png";
 
     public $newavatar;
@@ -76,9 +76,11 @@ class UserInfo extends \yii\db\ActiveRecord
 
     public function beforeSave($insert)
     {
+        $img_url = Yii::$app->basePath . '/web';
         if ($this->newavatar) {
-            $this->avatar = self::IMG_URL . $this->user_id . '__avatar.' . $this->newavatar->extension;
-            $this->newavatar->saveAs($this->avatar, true);
+            $this->avatar =   self::IMG_URL . $this->user_id . '__avatar.' . $this->newavatar->extension;
+
+            $this->newavatar->saveAs($img_url . $this->avatar, true);
         }
 
         if ($this->newdoc1) {
