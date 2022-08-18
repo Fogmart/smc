@@ -87,7 +87,18 @@ class SiteController extends Controller
 
         $model = new LoginForm();
         if ($model->load(Yii::$app->request->post()) && $model->login()) {
-            return $this->goBack();
+            //return $this->goBack();
+            $typeId = \Yii::$app->user->identity->getTypeId();
+            Yii::$app->session->setFlash('success', 'Вы успешно вошли в систему');
+
+            // Redirect if user is client
+            if($typeId == 1) {
+                return $this->redirect(['../profile']);
+            }
+            // Redirect if user is master
+            if($typeId == 2) {
+                return $this->redirect(['user/lk-master']);
+            }
         }
 
         $model->password = '';
@@ -105,8 +116,9 @@ class SiteController extends Controller
     public function actionLogout()
     {
         Yii::$app->user->logout();
-
-        return $this->goHome();
+        //return $this->goHome();
+        Yii::$app->session->setFlash('success', 'Вы вышли из системы');
+        return $this->redirect(['site/login']);
     }
 
     /**
@@ -218,17 +230,19 @@ class SiteController extends Controller
      */
     public function actionVerifyEmail($token)
     {
+
         try {
             $model = new VerifyEmailForm($token);
         } catch (InvalidArgumentException $e) {
             throw new BadRequestHttpException($e->getMessage());
         }
         if (($user = $model->verifyEmail()) && Yii::$app->user->login($user)) {
-            Yii::$app->session->setFlash('success', 'Your email has been confirmed!');
-            return $this->goHome();
+            Yii::$app->session->setFlash('success', 'Ваш email успешно подтвержден!');
+            //return $this->goHome();
+            return $this->redirect(['site/login']);
         }
-
-        Yii::$app->session->setFlash('error', 'Sorry, we are unable to verify your account with provided token.');
+        //Yii::$app->session->setFlash('error', 'Sorry, we are unable to verify your account with provided token.');
+        Yii::$app->session->setFlash('error', 'К сожалению, мы не можем подтвердить вашу учетную запись с помощью предоставленного токена.');
         return $this->goHome();
     }
 
@@ -264,6 +278,7 @@ class SiteController extends Controller
             $model->type_id = 1;
             if ($model->signup()) {
                 Yii::$app->session->setFlash('success', 'Вы успешно зарегистрировались. На ваш электронный почтовый адрес направлено письмо для активации аккаунта. После активации аккаунта вы сможете пользоваться сервисом.');
+                //return $this->goHome();
                 return $this->redirect(['site/login']);
             }
         }
@@ -277,17 +292,10 @@ class SiteController extends Controller
         $model = new SignupForm();
         if ($this->request->isPost) {
             $model->load($this->request->post());
-
-            //echo '<pre>';
-            //print_r(Yii::$app->session->getFlash());
-            //echo '</pre>';
-            //Yii::debug('debug',  print_r($model, true));
-
             $model->type_id = 2;
             if ($model->signup()) {
-                //Yii::$app->session->setFlash('success', 'Thank you for registration. Please check your inbox for verification email.');
-                //return $this->goHome();
                 Yii::$app->session->setFlash('success', 'Вы успешно зарегистрировались. В ближайшее время модератор проверить ваш профиль и произведет активацию, после чего вы сможете пользоваться сервисом.');
+                //return $this->goHome();
                 return $this->redirect(['site/login']);
             }
         }
