@@ -68,16 +68,20 @@ AppAsset::register($this);
                             </button>
                             <ul class="navbar-nav mr-auto">
                                 <li class="nav-item active">
-                                    <a class="nav-link" href="/order/">Список заказов</a>
+                                    <?if (Yii::$app->user->identity->ismaster ) {?>
+                                        <a class="nav-link" href="/order/">Список заказов</a>
+                                    <?php }?>
+
+                                    <?if (Yii::$app->user->identity->isclient ) {?>
+                                        <a class="nav-link" href="../order/create">Создать заявку</a>
+                                    <?php }?>
                                 </li>
                                 <li class="nav-item">
                                     <a class="nav-link" href="/support">Техническая поддержка</a>
                                 </li>
-
                                 <li class="nav-item">
 
                                 </li>
-
                                 <li class="nav-item dropdown">
                                     <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown"
                                        aria-haspopup="true" aria-expanded="false">

@@ -62,11 +62,6 @@ use yii\widgets\DetailView;
                     <a href="/user-balance/">Пополнить баланс</a>
                 </div>
             </div>
-
-            
-
-
-
         </div>
     </div>
 </section>
@@ -82,7 +77,6 @@ use yii\widgets\DetailView;
 
 
 <div class="owl-carousel owl-theme" id="slider_active_order">
-
     <?foreach ($user->myorders as $cnt_my_ord=>$order) {
         echo $this->render('/order/order', [
             'order' => $order,
@@ -91,8 +85,6 @@ use yii\widgets\DetailView;
     }
     if ($cnt_my_ord > 4) $cnt_my_ord = 4;
     ?>
-
-    
 </div>
 
 <div class="col-md-12">
@@ -143,7 +135,6 @@ use yii\widgets\DetailView;
                             <div class="prof">
                                 Сантехник
                             </div>
-
                             <div class="raiting">
                                 <p>Сложность</p>
                                 <img src="/images/star_full.svg">

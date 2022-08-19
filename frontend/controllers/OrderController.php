@@ -67,7 +67,6 @@ class OrderController extends Controller
             $order->save();
             return $this->redirect(['my-orders']);
         }
-
     }
 
 
