@@ -47,7 +47,11 @@ return [
                 'support/<id:\d+>' => 'support-ticket/view',
             ],
         ],
-
+        'formatter' => [
+            'dateFormat'     => 'php:d-m-Y',
+            'datetimeFormat' => 'php:d-m-Y в H:i:s',
+            'timeFormat'     => 'php:H:i:s',
+        ],
     ],
     'params' => $params,
 ];

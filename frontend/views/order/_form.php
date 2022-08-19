@@ -4,6 +4,7 @@ use kartik\select2\Select2;
 use yii\helpers\ArrayHelper;
 use yii\helpers\Html;
 use yii\widgets\ActiveForm;
+#use yii\jui\DatePicker;
 
 /* @var $this yii\web\View */
 /* @var $model common\models\Order */
@@ -38,14 +39,32 @@ use yii\widgets\ActiveForm;
 
     <?= $form->field($model, 'desctipt')->textarea() ?>
 
-    <?= $form->field($model, 'price')->textInput() ?>
+    <?= $form->field($model, 'price')->textInput(['type' => 'number']) ?>
 
     <?= $form->field($model, 'level')->dropdownList(\common\models\Order::LEVEL) ?>
 
-    <?= $form->field($model, 'phone')->textInput() ?>
+    <?= $form->field($model, 'phone')->widget(\yii\widgets\MaskedInput::className(),[
+        'mask' => '+7 (999) 999 99 99',
+    ]) ?>
 
-    <?= $form->field($model, 'timelimit')->textInput() ?>
+    <?
+    // ToDo: set datepicker
+    ?>
 
+
+    <?/*= $form->field($model, 'timelimit')->textInput() */?>
+
+    <?/*= $form->field($model, 'timelimit')->widget(DatePicker::className(), [
+            'options' => [
+                'value' => Yii::$app->formatter->asDate($model->timelimit),
+            ],
+            'containerOptions' => [
+                'autoclose' => TRUE,
+                'format'    => 'dd-mm-yyyy',
+                'timelimit' => 'd',
+            ]
+        ]
+    ) */?>
 
     <div class="form-group">
         <?= Html::submitButton('Сохранить', ['class' => 'btn btn-success']) ?>

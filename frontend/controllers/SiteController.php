@@ -117,8 +117,8 @@ class SiteController extends Controller
     public function actionLogout()
     {
         Yii::$app->user->logout();
-
-        return $this->goHome();
+        //return $this->goHome();
+        return $this->redirect(['site/login']);
     }
 
     /**
@@ -235,11 +235,16 @@ class SiteController extends Controller
         } catch (InvalidArgumentException $e) {
             throw new BadRequestHttpException($e->getMessage());
         }
-        if (($user = $model->verifyEmail()) && Yii::$app->user->login($user)) {
+
+        if(($user = $model->verifyEmail())) {
             Yii::$app->session->setFlash('success', 'Ваш email успешно подтвержден!');
-            //return $this->goHome();
             return $this->redirect(['site/login']);
         }
+
+        /*if (($user = $model->verifyEmail()) && Yii::$app->user->login($user)) {
+            Yii::$app->session->setFlash('success', 'Ваш email успешно подтвержден!');
+            //return $this->goHome();
+        }*/
         //Yii::$app->session->setFlash('error', 'Sorry, we are unable to verify your account with provided token.');
         Yii::$app->session->setFlash('error', 'К сожалению, мы не можем подтвердить вашу учетную запись с помощью предоставленного токена.');
         return $this->goHome();
