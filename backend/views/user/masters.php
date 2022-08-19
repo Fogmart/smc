@@ -77,7 +77,7 @@ use yii\helpers\Url;
           <td class="phone" data-label="Телефон"><?=(isset($user->info)) ? $user->phone : '' ?></td>
           <td class="balance" data-label="Баланс"><?=(isset($user->info)) ? $user->info->balance : '' ?></td>
           <td class="edit" data-label="Ред."><a href="<?=Url::to(['user/update', 'id' => $user->id ])?>"><img src="images/edit.svg"></a></td>
-          <td class="del" data-label="Удалить"><a href=""><img src="images/del.svg"></a></td>
+          <td class="del" data-label="Удалить"><a onclick="user_del(<?=$user->id?>)"><img src="images/del.svg"></a></td>
       </tr>
   <? } ?>
 
@@ -87,3 +87,14 @@ use yii\helpers\Url;
         </div>
     </div>
 </section>
+
+
+<script>
+    function user_del(id) {
+        if (confirm('Удалить?')){
+            $.get("index.php?r=user%2Fdelete&id="+id, function (data) {
+                document.location.reload()
+            })
+        }
+    }
+</script>
