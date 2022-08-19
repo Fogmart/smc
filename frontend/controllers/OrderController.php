@@ -90,6 +90,7 @@ class OrderController extends Controller
      */
     public function actionCreate()
     {
+        $this->layout = "main2";
         $model = new Order();
 
         if ($this->request->isPost) {

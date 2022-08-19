@@ -29,15 +29,12 @@
 
                     <div class="raiting">
                         <p>Сложность</p>
-
                         <? for ($i=1; $i<=$order->level; $i++) {?>
                             <img src="/images/star_full.svg">
                         <? }?>
                         <? for ($i=$order->level; $i< 5; $i++) {?>
                             <img src="/images/star_empty.svg">
                         <? }?>
-
-
                     </div>
 
                     <div class="status">

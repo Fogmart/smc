@@ -45,7 +45,7 @@
         </div>
         <div class="btn_price">
             <button>Закрыть заявку</button>
-            <span>1000 <i>руб.</i></span>
+            <span><?=$order->price?> <i>руб.</i></span>
         </div>
     </div>
 </div>
