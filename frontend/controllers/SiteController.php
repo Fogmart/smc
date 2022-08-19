@@ -237,7 +237,7 @@ class SiteController extends Controller
         }
 
         if(($user = $model->verifyEmail())) {
-            Yii::$app->session->setFlash('success', 'Ваш email успешно подтвержден!');
+            Yii::$app->session->setFlash('success', 'Ваш email успешно подтвержден! Вы можете войти в систему.');
             return $this->redirect(['site/login']);
         }
 
@@ -276,6 +276,7 @@ class SiteController extends Controller
     }
 
     public function actionRegClient(){
+        $this->layout = "empty";
         $model = new SignupForm();
         if ($this->request->isPost) {
             $model->load($this->request->post());
