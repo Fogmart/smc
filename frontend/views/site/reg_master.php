@@ -152,17 +152,14 @@ use yii\helpers\ArrayHelper;
 
                 <div class="bottom_link">
                     <p class="text-grey">Есть аккаунт? <a href="/site/login">Войти</a></p>
-                <p class="text-grey">Центр поддержки клиентов: <a href="#">8 800 100 00 00</a><br>
-Звонок по России бесплатный</p>
+                <p class="text-grey">Центр поддержки клиентов: <a href="#">8 800 100 00 00</a><br />
+                    Звонок по России бесплатный</p>
                 </div>
             </div>
-            
         </div>
-
-
-
-
     </div>
 </div>
     <?php ActiveForm::end(); ?>
 </section>
+
+<!--<a href="test-email">.</a>-->

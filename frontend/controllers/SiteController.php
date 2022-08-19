@@ -298,8 +298,9 @@ class SiteController extends Controller
             $model->load($this->request->post());
             $model->type_id = 1;
             if ($model->signup()) {
-                Yii::$app->session->setFlash('success', 'Вы успешно зарегистрировались. На ваш электронный почтовый адрес направлено письмо для активации аккаунта. После активации аккаунта вы сможете пользоваться сервисом.');
+                //Yii::$app->session->setFlash('success', 'Вы успешно зарегистрировались. На ваш электронный почтовый адрес направлено письмо для активации аккаунта. После активации аккаунта вы сможете пользоваться сервисом.');
                 //return $this->goHome();
+                Yii::$app->session->setFlash('success', 'Вы успешно зарегистрировались, теперь вы можете войти в систему');
                 return $this->redirect(['site/login']);
             }
         }
@@ -316,8 +317,9 @@ class SiteController extends Controller
             $model->load($this->request->post());
             $model->type_id = 2;
             if ($model->signup()) {
-                Yii::$app->session->setFlash('success', 'Вы успешно зарегистрировались. В ближайшее время модератор проверить ваш профиль и произведет активацию, после чего вы сможете пользоваться сервисом.');
+                //Yii::$app->session->setFlash('success', 'Вы успешно зарегистрировались. В ближайшее время модератор проверить ваш профиль и произведет активацию, после чего вы сможете пользоваться сервисом.');
                 //return $this->goHome();
+                Yii::$app->session->setFlash('success', 'Вы успешно зарегистрировались, теперь вы можете войти в систему');
                 return $this->redirect(['site/login']);
             }
         }

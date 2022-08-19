@@ -72,7 +72,7 @@ class SignupForm extends Model
         $user = new User();
         $user->username = $this->username;
         $user->email = $this->email;
-        $user->status = '9';
+        $user->status = '1'; // Status 9 is non-active user
         $user->setPassword($this->password);
         $user->generateAuthKey();
         $user->generateEmailVerificationToken();
@@ -93,13 +93,13 @@ class SignupForm extends Model
         $uInfo->save();
         
         // Email to user to self-activate
-        if($this->type_id == 1) {
+        /*if($this->type_id == 1) {
             $this->sendEmail($user);
         }
         // Email to admin to activate master
         if($this->type_id == 2) {
             $this->sendVerifiationEmailToAdmin($user);
-        }
+        }*/
 
         return 1;
     }
