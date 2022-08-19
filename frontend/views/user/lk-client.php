@@ -49,23 +49,11 @@ use yii\widgets\DetailView;
                 <div class="btn_profile_edit">
                     <button>Редактировать профиль</button>
                 </div>
-
-                
             </div>
 
             <div class="col-md-4">
-                <div class="profile_balance">
-                    <div class="balance">
-                        <span>Баланс:</span>
-                        <div> <?=$user->info->balance?> руб.</div>
-                    </div>
-                    <a href="/user-balance/">Пополнить баланс</a>
-                </div>
+                <a href="../order/create"><button>Создать заявку</button></a>
             </div>
-
-            
-
-
 
         </div>
     </div>
@@ -76,13 +64,12 @@ use yii\widgets\DetailView;
     <div class="container">
         <div class="row">
 
-<div class="col-md-12">
+<!--<div class="col-md-12">
    <h3>Активные заявки</h3> 
-</div>
+</div>-->
 
 
 <div class="owl-carousel owl-theme" id="slider_active_order">
-
     <?foreach ($user->myorders as $cnt_my_ord=>$order) {
         echo $this->render('/order/order', [
             'order' => $order,
@@ -91,23 +78,17 @@ use yii\widgets\DetailView;
     }
     if ($cnt_my_ord > 4) $cnt_my_ord = 4;
     ?>
-
-    
 </div>
 
-<div class="col-md-12">
-
-
+<!--<div class="col-md-12">
     <div class="btn_center">
-                <button>Показать все активные заявки</button>
-            </div>
-</div>
+        <button>Показать все активные заявки</button>
+    </div>
+</div>-->
 
 </div>
 </div>
 </section>
-
-
 
 
 <section id="list_items">
@@ -115,12 +96,11 @@ use yii\widgets\DetailView;
         <div class="row">
 
 <div class="col-md-12">
-   <h3>Завершенные заявки</h3> 
+   <h3>Заявки без исполнителя</h3>
 </div>
 
 
 <div class="owl-carousel owl-theme" id="slider_complite_order">
-    
     <div class="slide">
         <div class="col-md-12">
                 <div class="job_item">
