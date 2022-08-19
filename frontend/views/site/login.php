@@ -37,59 +37,67 @@ $this->params['breadcrumbs'][] = $this->title;
 ?>
 
 
-<section id="auth_block">
-    <div class="container">
-        <div class="row">
-            <div class="col-md-12">
-                <div class="logo_white">
-                    <div class="logo_item">
-                        <img src="/images/logo_white.svg">
-                        <span>SMC</span>
+    <section id="auth_block">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="logo_white">
+                        <div class="logo_item">
+                            <img src="/images/logo_white.svg">
+                            <span>SMC</span>
+                        </div>
+
+                        <p>качество, быстрота, надёжность</p>
                     </div>
-                    <p>качество, быстрота, надёжность</p>
-                </div>
 
-                <div class="auth_items block_shadow b_center">
 
-                    <h2 class="b_center">Вход в систему</h2>
+                    <div class="auth_items block_shadow b_center">
 
-                    <?php $form = ActiveForm::begin(['id' => 'login-form']); ?>
+                        <h2 class="b_center">Вход в систему</h2>
+                        <?php $form = ActiveForm::begin(['id' => 'login-form']); ?>
 
-                    <?php
-                    // Flash message after success registration
-                    if (Yii::$app->session->hasFlash('success')): ?>
-                        <div id="w0-success-0" class="alert-success alert alert-dismissible" role="alert">
-                            <?= Yii::$app->session->getFlash('success');?>
-                            <button type="button" class="close" data-dismiss="alert"><span aria-hidden="true">×</span></button>
-                        </div>
-                    <?php endif; ?>
+                        <?php
+                        // Flash message after success registration
+                        if (Yii::$app->session->hasFlash('success')): ?>
+                            <div id="w0-success-0" class="alert-success alert alert-dismissible" role="alert">
+                                <?= Yii::$app->session->getFlash('success');?>
+                                <button type="button" class="close" data-dismiss="alert"><span aria-hidden="true">×</span></button>
+                            </div>
+                        <?php endif; ?>
 
-                    <?php
-                    // Flash message after error on registration
-                    if (Yii::$app->session->hasFlash('error')): ?>
-                        <div id="w0-success-0" class="alert-danger alert alert-dismissible" role="alert">
-                            <?= Yii::$app->session->getFlash('error');?>
-                            <button type="button" class="close" data-dismiss="alert"><span aria-hidden="true">×</span></button>
-                        </div>
-                    <?php endif; ?>
+                        <?php
+                        // Flash message after error on registration
+                        if (Yii::$app->session->hasFlash('error')): ?>
+                            <div id="w0-success-0" class="alert-danger alert alert-dismissible" role="alert">
+                                <?= Yii::$app->session->getFlash('error');?>
+                                <button type="button" class="close" data-dismiss="alert"><span aria-hidden="true">×</span></button>
+                            </div>
+                        <?php endif; ?>
 
-                    <?= $form->field($model, 'username')
-                        ->textInput(['autofocus' => true, 'placeholder' => "E-mail", 'class'=>'input'])->label('') ?>
-                    <?= $form->field($model, 'password')
-                        ->passwordInput(['placeholder' => "Пароль", 'class'=>'input'])->label('') ?>
+                        <?= $form->field($model, 'username')
+                            ->textInput(['autofocus' => true, 'placeholder' => "E-mail", 'class'=>'input', 'required'=>true])->label(false) ?>
+
+                        <?= $form->field($model, 'password')
+                            ->passwordInput(['placeholder' => "Пароль", 'class'=>'input', 'required'=>true])->label(false) ?>
+
                         <?= Html::submitButton('Войти', ['class' => 'button', 'name' => 'login-button']) ?>
-                    <?php ActiveForm::end(); ?>
+                        <?php ActiveForm::end(); ?>
 
-                    <p class="m_t_15"><a href="#">Забыли пароль?</a></p>
-                    <p class="m_t_15">Нет аккаунта? <a href="/site/variants-reg">Зарегистрируйтесь</a></p>
+                        <p class="m_t_15"><a href="#">Забыли пароль?</a></p>
+                        <p class="text-grey">Нет аккаунта? <a href="/site/variants-reg">Зарегистрируйтесь</a></p>
+                        <h5>Скачайте наше приложение с apple store и google play</h5>
+                        <div style="display: flex;"><a href="/uploads/app/smc.apk" target="_blank"><img style="width: 90%;" src="/images/app.png"></a>
+                            <a href="/uploads/app/smc.apk" target="_blank"><img style="width: 90%;" src="/images/android.png"></a></div>
+                    </div>
+
+                    <p class="text-grey">Центр поддержки клиентов: <a href="tel:+78001000000">8 800 100 00 00</a><br>
+                        Звонок по России бесплатный</p>
+
+
                 </div>
-                
-                <p class="text-grey">Центр поддержки клиентов: <a href="#">8 800 100 00 00</a><br>
-                    Звонок по России бесплатный</p>
             </div>
         </div>
-    </div>
-</section>
+    </section>
 
 <?php $this->endBody() ?>
     </body>

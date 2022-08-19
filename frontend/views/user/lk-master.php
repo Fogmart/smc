@@ -15,7 +15,7 @@ use yii\widgets\DetailView;
 
 <div class="row">
         <div class="col-md-12">
-            <h1>Профиль</h1>
+            <h1>Профиль мастера</h1>
         </div>
     </div>
 
