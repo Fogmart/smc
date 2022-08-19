@@ -222,6 +222,22 @@ class SiteController extends Controller
     }
 
     /**
+     * Test email
+     *
+     * @param string $token
+     * @throws BadRequestHttpException
+     * @return yii\web\Response
+     */
+    public function actionTestEmail()
+    {
+        $model = new ContactForm();
+        //$model->sendTestEmail(Yii::$app->params['adminEmail']);
+        $model->sendTestEmail('info@t3dev.ru');
+        Yii::$app->session->setFlash('success', 'Тестовое сообщение отправлено');
+        return $this->redirect(['site/login']);
+    }
+
+    /**
      * Verify email address
      *
      * @param string $token

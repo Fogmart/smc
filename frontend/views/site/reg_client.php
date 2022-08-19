@@ -95,9 +95,3 @@ use yii\helpers\ArrayHelper;
         </div>
     </div>
 </section>
-
-<!--<script>
-    function thisFileUpload() {
-        document.getElementById("signupform-newavatar").click();
-    };
-</script>-->

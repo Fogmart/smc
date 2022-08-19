@@ -48,6 +48,23 @@ class ContactForm extends Model
      * @param string $email the target email address
      * @return bool whether the email was sent
      */
+    public function sendTestEmail($email)
+    {
+        return Yii::$app->mailer->compose()
+            ->setTo($email)
+            ->setFrom('noreply@smcentr.su')
+            //->setReplyTo([$this->email => $this->name])
+            ->setSubject('Test subject')
+            ->setTextBody('Test body')
+            ->send();
+    }
+
+    /**
+     * Sends an email to the specified email address using the information collected by this model.
+     *
+     * @param string $email the target email address
+     * @return bool whether the email was sent
+     */
     public function sendEmail($email)
     {
         return Yii::$app->mailer->compose()
