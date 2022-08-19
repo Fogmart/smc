@@ -88,7 +88,7 @@ AppAsset::register($this);
                                             <a class="dropdown-item" href="/user/lk-master">Профиль</a>
                                             <a class="dropdown-item" href="/user-balance">Баланс</a>
                                         <? } else {?>
-                                            <a class="dropdown-item" href="/profile">Профиль</a>
+                                            <a class="dropdown-item" href="/user/lk-client">Профиль</a>
                                         <? } ?>
                                         <a class="dropdown-item" href="#">История заказов</a>
                                         <a class="dropdown-item" href="#">Уведомления</a>

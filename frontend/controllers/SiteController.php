@@ -87,19 +87,18 @@ class SiteController extends Controller
 
         $model = new LoginForm();
         if ($model->load(Yii::$app->request->post()) && $model->login()) {
-            return $this->redirect([\Yii::$app->user->identity->home]);
+            //return $this->redirect([\Yii::$app->user->identity->home]);
             //return $this->goBack();
-            /*$typeId = \Yii::$app->user->identity->getTypeId();
+            $typeId = \Yii::$app->user->identity->getTypeId();
             Yii::$app->session->setFlash('success', 'Вы успешно вошли в систему');
-
             // Redirect if user is client
             if($typeId == 1) {
-                return $this->redirect(['../profile']);
+                return $this->redirect(['user/lk-client']);
             }
             // Redirect if user is master
             if($typeId == 2) {
                 return $this->redirect(['user/lk-master']);
-            }*/
+            }
         }
 
         $model->password = '';

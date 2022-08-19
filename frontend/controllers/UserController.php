@@ -11,7 +11,9 @@ class UserController extends \yii\web\Controller
     }
 
     public function actionLkClient(){
-        return $this->render('lk-client');
+        //return $this->render('lk-client');
+        $user = \Yii::$app->user->identity;
+        return $this->render('lk-client', compact('user'));
     }
 
     public function actionLkMaster(){

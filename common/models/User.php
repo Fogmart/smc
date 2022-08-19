@@ -284,7 +284,7 @@ class User extends ActiveRecord implements IdentityInterface
     }
 
     public function getHome() {
-        if ($this->info->type_id == '1') return '/profile';
+        if ($this->info->type_id == '1') return '/user/lk-client';
         if ($this->info->type_id == '2') return '/user/lk-master';
         return '/profile';
     }
